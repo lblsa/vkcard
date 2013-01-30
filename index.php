@@ -1,1 +1,1 @@
-<b>VKCard application - Фотовиньетки</b>
+<b>VKCard application</b>
