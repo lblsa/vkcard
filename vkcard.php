@@ -70,6 +70,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         cursor: move;
         top:0px;
         left:0px;
+        border: 1px solid rgba(221, 221, 221, 0);
+      }
+      .clone:hover{
         border: 1px solid rgba(221, 221, 221, 0.5);
       }
       .drop {
