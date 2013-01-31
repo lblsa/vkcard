@@ -66,10 +66,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         position:absolute;
         width:250px;
         height:250px;
-        background: rgba(221, 221, 221, 0.2);
+        /*background: rgba(221, 221, 221, 0.2);*/
         cursor: move;
         top:0px;
         left:0px;
+        border: 1px solid rgba(221, 221, 221, 0.5);
       }
       .drop {
         border: 1px dashed gray;
