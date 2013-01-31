@@ -1,8 +1,15 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-  
-  //var_dump($_POST); die;
+
+
+
+  if (strpos($_POST['img'],'://')>0){
+    $blah = parse_url($_POST['img']);
+    $_POST['img'] = $blah['path'];
+  }
+
+//var_dump($_POST['img']); die;
 
   $image = new Imagick();
   $image->newImage(315, 420, new ImagickPixel('white'));
@@ -64,6 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         top:0px;
         left:0px;
       }
+      .drop {
+        border: 1px dashed gray;
+      }
     </style>
     <link href="/vkcard/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -84,6 +94,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     <div class="container">
       <div class="row">
         <div class="span6">
+          <p>
+            <button class="btn btn-large btn-link drop" id="dropzone">Перетащите файл сюда или выберите с диска</button>
+            <p><small>Загрузите ваше фото, размером менее 1Mb</small></p>
+            <div class="fix_block">
+                <div id="progress" class="progress progress-striped hide">
+                    <div class="bar" style="width: 0%;"></div>
+                </div>
+            </div>
+            <input id="fileupload" type="file" class="hidden" name="files[]" data-url="/upload.php" />
+            <span id="upload_inf"></span>
+            <div id="upload_alert"></div>
+          </p>
           <p> <img src="/vkcard/img/samurai.jpg" alt="" id="cropbox" /> </p>
         </div>
         <div class="span6">
@@ -149,93 +171,192 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         <p>&copy; Developed by <a href="http://showdev.ru">showdev.ru</a></p>
       </footer>
     </div>
-    <script src="/vkcard/js/jquery.min.js"></script>    
-    <script src="/vkcard/js/jquery.Jcrop.js"></script>
-    <script src="/vkcard/js/jquery-ui-1.10.0.custom.min.js"></script>
-    <script language="Javascript">
-
-      $(function(){
-
-        $('#cropbox').Jcrop({
-          onChange: updatePreview,
-          onSelect: updatePreview,
-          aspectRatio: 1,
-        },function(){
-          // Use the API to get the real image size
-          var bounds = this.getBounds();
-          boundx = bounds[0];
-          boundy = bounds[1];
-          // Store the API in the jcrop_api variable
-          jcrop_api = this;
-        });
-
-        $('#prev_container, .clone').draggable({
-          containment: ".card",
-          stop: function( event, ui ) {
-            $('#prev_container, .clone').css({left:ui.position.left,top:ui.position.top});
-            $('#px').val(ui.position.left);
-            $('#py').val(ui.position.top);
-          }
-        });
-
-        /*$( ".card" ).droppable({          
-          accept: "#prev_container",
-          activeClass: "ui-state-hover",
-          hoverClass: "ui-state-active",
-          drop: function( event, ui ) {
-            console.log(ui);
-          }
-        });*/
-
-      });
-
-      function updateCoords(c)
-      {
-      };
-
-      function checkCoords()
-      {
-        if (parseInt($('#w').val())) return true;
-        alert('Please select a crop region then press submit.');
-        return false;
-      };
-
-      function updatePreview(c)
-      {
-        //updateCoords
-        $('#x').val(c.x);
-        $('#y').val(c.y);
-        $('#w').val(c.w);
-        $('#h').val(c.h);
-        $('#img').val( $('#cropbox').attr('src') );
-
-
-        if (parseInt(c.w) > 0)
-        {
-          var rx = 250 / c.w;
-          var ry = 250 / c.h;
-
-          $('#preview').css({
-            //width: Math.round(rx * boundx) + 'px',
-            //height: Math.round(ry * boundy) + 'px',
-            //marginLeft: '-' + Math.round(rx * c.x) + 'px',
-            //marginTop: '-' + Math.round(ry * c.y) + 'px'
-            marginLeft: '-' + c.x + 'px',
-            marginTop: '-' + c.y + 'px'
-          });
+    <script type="text/javascript" src="/vkcard/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/vkcard/js/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="/vkcard/js/jquery.iframe-transport.js"></script>
+    <script type="text/javascript" src="/vkcard/js/jquery.fileupload.js"></script>
+    <script type="text/javascript" src="/vkcard/js/jquery.Jcrop.js"></script>
+    <script type="text/javascript" src="/vkcard/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script type="text/javascript">
+$(function(){
+  $('#dropzone').click(function(){
+      $('#fileupload').click();
+  });
+  
+  var jqXHR;
+  jqXHR = $('#fileupload').fileupload({
+      dataType: 'json',
+      done: function (e, data) {
           
-          $('#prev_container, .clone').css({ width: c.w + 'px', height:  c.h + 'px'});
-        }
-      };
+          var error = 0;
 
-      $('.vin').click(function(){
-        $('.vin_cont').html('<img width="100%"  src="/vignette/14_'+$(this).val()+'.png" />');
-        $('.vin_cont').show();
-        $('.clone').show();
-      });
+          $.each(data.result.files, function (index, file) {
+            
+
+            if (file.error) {
+              error = 1
+              my_alert(file.error);
+            } else {
+
+              $('#cropbox, #preview').attr('src',file.url);
+
+              var img = new Image();
+              img.onload = function() {
+                var new_w = this.width;
+                var new_h = this.height;
+
+                jcrop_api.destroy();
+                jcrop_api.disable();
+                jcrop_api.enable();
+
+                $('#cropbox, #preview').css({width: new_w, height: new_h});
+
+                $('#cropbox').Jcrop({
+                  trueSize: [new_w,new_h],
+                  onChange: updatePreview,
+                  onSelect: updatePreview,
+                  aspectRatio: 1,
+                },function(){
+                  // Use the API to get the real image size
+                  var bounds = this.getBounds();
+                  boundx = bounds[0];
+                  boundy = bounds[1];
+                  // Store the API in the jcrop_api variable
+                  jcrop_api = this;
+                });
+              }
+              img.src = file.url;
+
+            }
+          });
+          $('#progress').fadeOut();
+
+          if (!error)
+            $('#upload_alert').hide();
+          
+          $('#dropzone').html('Перетащите файл сюда или выберите с диска');
+      },
+      dropZone: $('.drop'),
+
+      drop: function(e, data){
+          if (data.files.length > 1) {
+            my_alert('Вы можете добавлять файлы только по одному');
+            return false;
+          }
+
+          $.each(data.files, function (index, file) {
+            if ( /^.*\.(png|gif|jpe?g)$/.test(file.name) ) {
+                $('#dropzone').html(file.name);
+            } else {
+                my_alert('Недопустимый формат');
+                jqXHR.abort();
+                return false;
+            }
+          });
+      },
+      change: function(e, data){
+          $.each(data.files, function (index, file) {
+            if ( /^.*\.(png|gif|jpe?g)$/.test(file.name) ) {
+                $('#dropzone').html(file.name);
+            } else {
+                my_alert('Недопустимый формат');
+                jqXHR.abort();
+                return false;
+            }
+          }); 
+      },
+      progressall: function (e, data) {
+        $('#progress').show();
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        $('#progress .bar').css(
+            'width',
+            progress + '%'
+        );
+      },
+  }).error(function (jqXHR, textStatus, errorThrown) {
+      if (errorThrown === 'abort') {
+          alert('File Upload has been canceled');
+      }
+  });
+
+  var jcrop_api;
+
+  $('#cropbox').Jcrop({
+    onChange: updatePreview,
+    onSelect: updatePreview,
+    aspectRatio: 1,
+  },function(){
+    // Use the API to get the real image size
+    var bounds = this.getBounds();
+    boundx = bounds[0];
+    boundy = bounds[1];
+    // Store the API in the jcrop_api variable
+    jcrop_api = this;
+  });
+
+  $('#prev_container, .clone').draggable({
+    containment: ".card",
+    stop: function( event, ui ) {
+      $('#prev_container, .clone').css({left:ui.position.left,top:ui.position.top});
+      $('#px').val(ui.position.left);
+      $('#py').val(ui.position.top);
+    }
+  });
+
+  /*$( ".card" ).droppable({          
+    accept: "#prev_container",
+    activeClass: "ui-state-hover",
+    hoverClass: "ui-state-active",
+    drop: function( event, ui ) {
+      console.log(ui);
+    }
+  });*/
+  $('.vin').click(function(){
+    $('.vin_cont').html('<img width="100%"  src="/vignette/14_'+$(this).val()+'.png" />');
+    $('.vin_cont').show();
+    $('.clone').show();
+  });
+});
+
+function updateCoords(c) {};
+
+function checkCoords(){
+  if (parseInt($('#w').val())) return true;
+  alert('Please select a crop region then press submit.');
+  return false;
+};
+
+function updatePreview(c){
+  //updateCoords
+  $('#x').val(c.x);
+  $('#y').val(c.y);
+  $('#w').val(c.w);
+  $('#h').val(c.h);
+  $('#img').val( $('#cropbox').attr('src') );
 
 
+  if (parseInt(c.w) > 0) {
+    var rx = 250 / c.w;
+    var ry = 250 / c.h;
 
+    $('#preview').css({
+      //width: Math.round(rx * boundx) + 'px',
+      //height: Math.round(ry * boundy) + 'px',
+      //marginLeft: '-' + Math.round(rx * c.x) + 'px',
+      //marginTop: '-' + Math.round(ry * c.y) + 'px'
+      marginLeft: '-' + c.x + 'px',
+      marginTop: '-' + c.y + 'px'
+    });
+    
+    $('#prev_container, .clone').css({ width: c.w + 'px', height:  c.h + 'px'});
+  }
+};
+
+function my_alert(message){
+    $('#upload_alert h4, #upload_alert p').remove();
+    var alert = '<h4>Warning!</h4><p>'+message+'</p>';
+    $('#upload_alert').append(alert).show();
+}
     </script>
   </body>
 </html>
