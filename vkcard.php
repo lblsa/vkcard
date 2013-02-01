@@ -2,14 +2,19 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 
-
-
   if (strpos($_POST['img'],'://')>0){
     $blah = parse_url($_POST['img']);
     $_POST['img'] = $blah['path'];
   }
 
-//var_dump($_POST['img']); die;
+//var_dump($_POST); die;
+
+  $draw = new ImagickDraw();
+  $draw->setFont('tnr.ttf');
+  //$draw->setResolution(50,50);
+  $draw->setFontSize(20);
+
+// echo $draw; die;
 
   $image = new Imagick();
   $image->newImage(315, 420, new ImagickPixel('white'));
@@ -27,6 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     //$vin->thumbnailImage(250, 250);
     $image->compositeImage( $vin, Imagick::COMPOSITE_DEFAULT, 0, 0 );
   }
+
+  $image->annotateImage($draw, $_POST['tx'], $_POST['ty'], 0, $_POST['text']);
+
 
   header('Content-type: image/jpeg');
   //echo $picture;
@@ -78,6 +86,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
       .drop {
         border: 1px dashed gray;
       }
+      #inner_text {
+        position: absolute;
+        width: 243px;
+        height: 100px;
+        top: 293px;
+        left: 36px;
+        border: 1px dashed #DDD;
+        white-space: pre;
+        font-family: 'Times New Roman';
+        font-size: 20px;
+      }
     </style>
     <link href="/vkcard/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -114,23 +133,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         </div>
         <div class="span6">
           <h3>Предпросмотр</h3>
-          <div class="row-fluid">
-            <div class="span8" style="position:relative;">
-              <div class="card">
-                <div style="width:0px;height:0px;overflow:hidden;" id="prev_container">
-                  <img src="/vkcard/img/samurai.jpg" id="preview" alt="Preview" class="jcrop-preview" />
-                </div>
-              </div>
-              <div class="vin_cont hide"></div>
-              <div class="clone hide"></div>
-            </div>
-            <div class="span3">
-              <textarea style="width: 190px;"></textarea>
-            </div>
-          </div>
+
           <form action="/vkcard.php" method="post" onsubmit="return checkCoords();">
-            <input type="hidden" id="px" name="px" value="0" />
-            <input type="hidden" id="py" name="py" value="0" />
+            <div class="row-fluid">
+              <div class="span8" style="position:relative;">
+                <div class="card">
+                  <div style="width:0px;height:0px;overflow:hidden;" id="prev_container">
+                    <img src="/vkcard/img/samurai.jpg" id="preview" alt="Preview" class="jcrop-preview" />
+                  </div>
+                </div>
+                <div class="vin_cont hide"><div id="inner_text"></div></div>
+                <div class="clone hide"></div>
+              </div>
+              <div class="span3">
+                <textarea class="hide" id="text" name="text" style="width: 190px;"></textarea>
+              </div>
+            </div>
+            <input type="hidden" id="px" name="px" value="1" />
+            <input type="hidden" id="py" name="py" value="1" />
+            <input type="hidden" id="tx" name="tx" value="36" />
+            <input type="hidden" id="ty" name="ty" value="293" />
             <input type="hidden" id="x" name="x" />
             <input type="hidden" id="y" name="y" />
             <input type="hidden" id="w" name="w" />
@@ -306,6 +328,13 @@ $(function(){
       $('#py').val(ui.position.top);
     }
   });
+  $('#inner_text').draggable({
+    containment: ".vin_cont",
+    stop: function( event, ui ) {
+      $('#tx').val(ui.position.left);
+      $('#ty').val(ui.position.top);
+    }
+  });
 
   /*$( ".card" ).droppable({          
     accept: "#prev_container",
@@ -316,9 +345,14 @@ $(function(){
     }
   });*/
   $('.vin').click(function(){
-    $('.vin_cont').html('<img width="100%"  src="/vignette/14_'+$(this).val()+'.png" />');
+    $('.vin_cont').prepend('<img width="100%"  src="/vignette/14_'+$(this).val()+'.png" />');
     $('.vin_cont').show();
     $('.clone').show();
+    $('#text').show();
+  });
+
+  $('#text').keyup(function(){
+    $('#inner_text').html($('#text').val());
   });
 });
 
