@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $image->compositeImage( $vin, Imagick::COMPOSITE_DEFAULT, 0, 0 );
   }
 
-  $image->annotateImage($draw, $_POST['tx'], $_POST['ty'], 0, $_POST['text']);
+  $image->annotateImage($draw, $_POST['tx']-2, $_POST['ty']+18, 0, $_POST['text']);
 
 
   header('Content-type: image/jpeg');
