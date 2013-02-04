@@ -87,6 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         border: 1px dashed gray;
       }
       #inner_text {
+        cursor: move;
         position: absolute;
         width: 243px;
         height: 100px;
