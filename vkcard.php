@@ -97,6 +97,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         font-family: 'Times New Roman';
         font-size: 20px;
       }
+      #inner_text p{
+        display:block;
+        padding: 0;
+        margin: 0;
+        white-space: pre;
+        font-family: 'Times New Roman';
+        font-size: 20px;
+      }
+      #inner_text:hover{
+        background-color: #fff;
+      }
+      .ui-resizable-se {
+        cursor: se-resize;
+        background-color: #000;
+        width: 8px;
+        z-index: 90;
+        height:8px;
+        right: -8px;
+        bottom: -8px;
+        position: absolute;
+        }
     </style>
     <link href="/vkcard/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -142,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                     <img src="/vkcard/img/samurai.jpg" id="preview" alt="Preview" class="jcrop-preview" />
                   </div>
                 </div>
-                <div class="vin_cont hide"><div id="inner_text"></div></div>
+                <div class="vin_cont hide"><div id="inner_text"><p></p></div></div>
                 <div class="clone hide"></div>
               </div>
               <div class="span3">
@@ -328,6 +349,9 @@ $(function(){
       $('#py').val(ui.position.top);
     }
   });
+
+  $("#inner_text" ).resizable();
+
   $('#inner_text').draggable({
     containment: ".vin_cont",
     stop: function( event, ui ) {
@@ -352,7 +376,7 @@ $(function(){
   });
 
   $('#text').keyup(function(){
-    $('#inner_text').html($('#text').val());
+    $('#inner_text p').html($('#text').val());
   });
 });
 
