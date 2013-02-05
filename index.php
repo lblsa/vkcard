@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     <link rel="stylesheet" href="/vkcard/css/jquery.Jcrop.css" type="text/css" />
     <style type="text/css">
       body {
-        padding-top: 60px;
+        padding-top: 0;
         padding-bottom: 40px;
       }
       .vin_cont {
@@ -121,14 +121,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     <![endif]-->
   </head>
   <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="brand" href="#">Vk Cards</a>
-        </div>
-      </div>
-    </div>
-
     <div class="container">
       <div class="row">
         <div class="span6">
