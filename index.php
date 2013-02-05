@@ -53,7 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         padding-bottom: 40px;
       }
       .container {
-        border:1px solid red;
       }
       .vin_cont {
         width: 315px;
@@ -124,10 +123,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     <![endif]-->
   </head>
   <body>
-    <div class="container span8">
+    <div class="container span12">
     <form action="/index.php" method="post" onsubmit="return checkCoords();">
       <div class="row">
-        <div class="span4">
+        <div class="span6">
           <ul class="nav nav-pills">
             <li class="dropdown">
               <a class="dropdown-toggle btn-link" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">
@@ -139,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
           </ul>
 
             <div class="row-fluid">
-              <div class="span8" style="position:relative;">
+              <div class="span6" style="position:relative;">
                 <div class="card">
                   <div style="width:0px;height:0px;overflow:hidden;" id="prev_container">
                     <img src="/vkcard/img/samurai.jpg" id="preview" alt="Preview" class="jcrop-preview" />
