@@ -7,14 +7,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $_POST['img'] = $blah['path'];
   }
 
-//var_dump($_POST); die;
-
   $draw = new ImagickDraw();
   $draw->setFont('tnr.ttf');
-  //$draw->setResolution(50,50);
   $draw->setFontSize(20);
-
-// echo $draw; die;
 
   $image = new Imagick();
   $image->newImage(315, 420, new ImagickPixel('white'));
@@ -29,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
   if ($_POST['vin'])
   {
     $vin = new Imagick('vignette/14_'.$_POST['vin'].'.png');
-    //$vin->thumbnailImage(250, 250);
     $image->compositeImage( $vin, Imagick::COMPOSITE_DEFAULT, 0, 0 );
   }
 
@@ -37,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 
   header('Content-type: image/jpeg');
-  //echo $picture;
   echo $image;
   exit;
 }
@@ -49,8 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     <title>Bootstrap, from Twitter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">
-
+    <meta name="author" content="marchukilya@gmail.com">
     <!-- Le styles -->
     <script src="http://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
     <link href="/vkcard/css/bootstrap.css" rel="stylesheet">
