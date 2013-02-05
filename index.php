@@ -157,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         <div class="span6">
           <h3>Предпросмотр</h3>
 
-          <form action="/vkcard.php" method="post" onsubmit="return checkCoords();">
+          <form action="/index.php" method="post" onsubmit="return checkCoords();">
             <div class="row-fluid">
               <div class="span8" style="position:relative;">
                 <div class="card">
