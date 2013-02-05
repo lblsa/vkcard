@@ -49,8 +49,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     <link rel="stylesheet" href="/vkcard/css/jquery.Jcrop.css" type="text/css" />
     <style type="text/css">
       body {
-        padding-top: 0;
+        padding-top: 10px;
         padding-bottom: 40px;
+      }
+      .container {
+        border:1px solid red;
       }
       .vin_cont {
         width: 315px;
@@ -121,27 +124,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     <![endif]-->
   </head>
   <body>
-    <div class="container">
+    <div class="container span8">
+    <form action="/index.php" method="post" onsubmit="return checkCoords();">
       <div class="row">
-        <div class="span6">
-          <p>
-            <button class="btn btn-large btn-link drop" id="dropzone">Перетащите файл сюда или выберите с диска</button>
-            <p><small>Загрузите ваше фото, размером менее 1Mb</small></p>
-            <div class="fix_block">
-                <div id="progress" class="progress progress-striped hide">
-                    <div class="bar" style="width: 0%;"></div>
-                </div>
-            </div>
-            <input id="fileupload" type="file" class="hidden" name="files[]" data-url="/upload.php" />
-            <span id="upload_inf"></span>
-            <div id="upload_alert"></div>
-          </p>
-          <p> <img src="/vkcard/img/samurai.jpg" alt="" id="cropbox" /> </p>
-        </div>
-        <div class="span6">
-          <h3>Предпросмотр</h3>
+        <div class="span4">
+          <ul class="nav nav-pills">
+            <li class="dropdown">
+              <a class="dropdown-toggle btn-link" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">
+                Выберите друга
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu" id="vk_auth" role="menu" aria-labelledby="dLabel"></ul>
+            </li>
+          </ul>
 
-          <form action="/index.php" method="post" onsubmit="return checkCoords();">
             <div class="row-fluid">
               <div class="span8" style="position:relative;">
                 <div class="card">
@@ -149,11 +145,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                     <img src="/vkcard/img/samurai.jpg" id="preview" alt="Preview" class="jcrop-preview" />
                   </div>
                 </div>
-                <div class="vin_cont hide"><div id="inner_text"><p></p></div></div>
-                <div class="clone hide"></div>
-              </div>
-              <div class="span3">
-                <textarea class="hide" id="text" name="text" style="width: 190px;"></textarea>
+                <div class="vin_cont">
+                    <img width="100%" src="/vignette/14_1.png">
+                    <div id="inner_text"><p></p></div>
+                </div>
+                <div class="clone"></div>
+                <textarea id="text" name="text" style="width: 302px; margin: 10px 0px 10px; height: 72px;"></textarea>
               </div>
             </div>
             <input type="hidden" id="px" name="px" value="1" />
@@ -165,46 +162,57 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             <input type="hidden" id="w" name="w" />
             <input type="hidden" id="h" name="h" />
             <input type="hidden" id="img" name="img" />
-            <input type="submit" value="Crop Image" />
-          
-
-            <h3>Виньетки</h3>
-            <table class="table table-bordered">
-              <tr>
-                <td>
-                  <img src="/vignette/14_1.png" alt="">
-                  <label for=""><input class="vin" type="radio" value="1" name="vin" /></label>
-                </td>
-                <td>
-                  <img src="/vignette/14_2.png" alt="">
-                  <label for=""><input class="vin" type="radio" value="2" name="vin" /></label>
-                </td>
-                <td>
-                  <img src="/vignette/14_3.png" alt="">
-                  <label for=""><input class="vin" type="radio" value="3" name="vin" /></label>
-                </td>
-                <td>
-                  <img src="/vignette/14_4.png" alt="">
-                  <label for=""><input class="vin" type="radio" value="4" name="vin" /></label>
-                </td>
-                <td>
-                  <img src="/vignette/14_5.png" alt="">
-                  <label for=""><input class="vin" type="radio" value="5" name="vin" /></label>
-                </td>
-              </tr>
-            </table>
-          </form>
-          <p>Наложить виньетку</p>
+            <input type="submit" class="btn" value="Crop Image" />
         </div>
+        <div class="span4">
+          <p> <img src="/vkcard/img/samurai.jpg" alt="" id="cropbox" /> </p>
+          <p>
+            <button class="btn btn-link drop" id="dropzone">Перетащите файл сюда или выберите с диска</button>
+            <p><small>Загрузите ваше фото, размером менее 1Mb</small></p>
+            <div class="fix_block">
+                <div id="progress" class="progress progress-striped hide">
+                    <div class="bar" style="width: 0%;"></div>
+                </div>
+            </div>
+            <input id="fileupload" type="file" class="hidden" name="files[]" data-url="/upload.php" />
+            <span id="upload_inf"></span>
+            <div id="upload_alert"></div>
+          </p>
+
+          <h3>Виньетки</h3>
+          <table class="table table-bordered">
+            <tr>
+              <td>
+                <img src="/vignette/14_1.png" alt="">
+                <label for=""><input class="vin" type="radio" value="1" checked name="vin" /></label>
+              </td>
+              <td>
+                <img src="/vignette/14_2.png" alt="">
+                <label for=""><input class="vin" type="radio" value="2" name="vin" /></label>
+              </td>
+              <td>
+                <img src="/vignette/14_3.png" alt="">
+                <label for=""><input class="vin" type="radio" value="3" name="vin" /></label>
+              </td>
+              <td>
+                <img src="/vignette/14_4.png" alt="">
+                <label for=""><input class="vin" type="radio" value="4" name="vin" /></label>
+              </td>
+              <td>
+                <img src="/vignette/14_5.png" alt="">
+                <label for=""><input class="vin" type="radio" value="5" name="vin" /></label>
+              </td>
+            </tr>
+          </table>
+        </div>
+        </form>
       </div>
-
-      <hr>
-
       <footer>
-        <p>&copy; Developed by <a href="http://showdev.ru">showdev.ru</a></p>
+        <p>&copy; Developed by <a href="http://showdev.ru" title="showdev.ru">showdev.ru</a></p>
       </footer>
     </div>
     <script type="text/javascript" src="/vkcard/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/vkcard/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/vkcard/js/jquery.ui.widget.js"></script>
     <script type="text/javascript" src="/vkcard/js/jquery.iframe-transport.js"></script>
     <script type="text/javascript" src="/vkcard/js/jquery.fileupload.js"></script>
@@ -355,9 +363,8 @@ $(function(){
     }
   });*/
   $('.vin').click(function(){
-    $('.vin_cont').prepend('<img width="100%"  src="/vignette/14_'+$(this).val()+'.png" />');
+    $('.vin_cont img').attr('src','/vignette/14_'+$(this).val()+'.png');
     $('.vin_cont').show();
-    $('.clone').show();
     $('#text').show();
   });
 
@@ -412,16 +419,14 @@ window.onload = function () {
   VK.api('friends.get', {fields:"first_name,last_name,photo"}, function(data) {
     var frCount = data.response.length;
 
-    var onlineStr = '<select name="vk_friend" multiple size=20>';
+    var onlineStr = '';
 
     for (var i=0; i<frCount; i++) {
-      onlineStr += '<option value="' + data.response[i].uid + '">' + data.response[i].first_name + ' ' + data.response[i].last_name + '</a></option>';
+      onlineStr += '<li data-value="' + data.response[i].uid + '">' + data.response[i].first_name + ' ' + data.response[i].last_name + '</li>';
     }
-    onlineStr += '</select>';
     var listdiv  = document.getElementById('vk_auth').innerHTML=onlineStr;
   });
 }
     </script>
-    <div id="vk_auth">aaaa</div>
   </body>
 </html>
