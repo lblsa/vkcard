@@ -188,10 +188,6 @@ function updatePreview(c){
     var ry = 250 / c.h;
 
     $('#preview').css({
-      //width: Math.round(rx * boundx) + 'px',
-      //height: Math.round(ry * boundy) + 'px',
-      //marginLeft: '-' + Math.round(rx * c.x) + 'px',
-      //marginTop: '-' + Math.round(ry * c.y) + 'px'
       marginLeft: '-' + c.x + 'px',
       marginTop: '-' + c.y + 'px'
     });
@@ -226,7 +222,7 @@ window.onload = function () {
 
     for (var i=0; i<frCount; i++) {
       onlineStr += '<li>'+
-                      '<span class="btn" data-i="'+i+'" data-value="' + data.response[i].uid + '" data-photo="'+data.response[i].photo+'">'
+                      '<span onclick="select_user('+i+'); return false;" class="btn" data-i="'+i+'" data-value="' + data.response[i].uid + '" data-photo="'+data.response[i].photo+'">'
                          + data.response[i].first_name + ' ' + data.response[i].last_name + 
                       '</span>'+
                     '</li>';
@@ -234,6 +230,12 @@ window.onload = function () {
     $('#vk_auth').html(onlineStr);
   });
 
+}
+
+function select_user(i){
+  //$('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
+  console.log($('[data-i='+i+']'));
+  console.log(users[i]);
 }
 
 
