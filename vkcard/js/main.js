@@ -151,7 +151,7 @@ $(function(){
     $('#inner_text p').html($('#text').val());
   });
 
-  $('#vk_auth a').click(function(){
+  $('#vk_auth span').click(function(){
     $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
 
     var i = $(this).attr('data-i');
@@ -216,6 +216,6 @@ window.onload = function () {
                       '</span>'+
                     '</li>';
     }
-    var listdiv  = $('#vk_auth').html(onlineStr);
+    $('#vk_auth').html(onlineStr);
   });
 }
