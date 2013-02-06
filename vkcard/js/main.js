@@ -18,7 +18,8 @@ $(function(){
               my_alert(file.error);
             } else {
 
-              $('#cropbox, #preview').attr('src',file.url);
+              var file_url = file.url.replace("files","files/medium");
+              $('#cropbox, #preview').attr({'src':file_url,'style':''});
 
               var img = new Image();
               img.onload = function() {
@@ -45,7 +46,7 @@ $(function(){
                   jcrop_api = this;
                 });
               }
-              img.src = file.url;
+              img.src = file_url;
 
             }
           });
@@ -65,7 +66,7 @@ $(function(){
           }
 
           $.each(data.files, function (index, file) {
-            if ( /^.*\.(png|gif|jpe?g)$/.test(file.name) ) {
+            if ( /^.*\.(png|gif|jpe?g)$/i.test(file.name) ) {
                 $('#dropzone').html(file.name);
             } else {
                 my_alert('Недопустимый формат');
@@ -76,7 +77,7 @@ $(function(){
       },
       change: function(e, data){
           $.each(data.files, function (index, file) {
-            if ( /^.*\.(png|gif|jpe?g)$/.test(file.name) ) {
+            if ( /^.*\.(png|gif|jpe?g)$/i.test(file.name) ) {
                 $('#dropzone').html(file.name);
             } else {
                 my_alert('Недопустимый формат');
@@ -205,6 +206,7 @@ function my_alert(message){
 var users;
 window.onload = function () {
   //{apiId: 3392840}
+  /*
   VK.init(function(){
       $('#vk_auth span').click(function(){
         $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
@@ -229,11 +231,12 @@ window.onload = function () {
     }
     $('#vk_auth').html(onlineStr);
   });
-
+  */
 }
 
 function select_user(i){
   //$('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
+  alert(1);
   console.log($('[data-i='+i+']'));
   console.log(users[i]);
 }

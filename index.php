@@ -1,4 +1,5 @@
 <?php
+$image_src = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 
@@ -30,11 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
   }
 
   $image->annotateImage($draw, $_POST['tx']-2, $_POST['ty']+18, 0, $_POST['text']);
-
-
-  header('Content-type: image/jpeg');
-  echo $image;
-  exit;
+  $image_src = 'files/result/'.time().'.jpg';
+  $image->writeImage($image_src);
 }
 ?>
 <!DOCTYPE html>
@@ -46,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
   <meta name="description" content="">
   <meta name="author" content="marchukilya@gmail.com">
   <!-- Le styles -->
-  <script src="http://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
+  <!-- <script src="http://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script> -->
   <link href="/vkcard/css/bootstrap.css" rel="stylesheet">
   <link href="/vkcard/css/bootstrap-responsive.css" rel="stylesheet">
   <link href="/vkcard/css/jquery.Jcrop.css" rel="stylesheet" />
@@ -56,25 +54,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
   <![endif]-->
 </head>
 <body>
-<form action="/index.php" method="post" onsubmit="return checkCoords();">
+<form action="/" method="post" onsubmit="return checkCoords();">
   <table class="main">
     <tr>
       <td class="left_bar">
-        <ul class="nav nav-pills">
-          <li class="dropdown">
-            <a class="dropdown-toggle btn-link" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">
+          <div class="dropdown">
+            <a class="dropdown-toggle btn-link btn-block" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">
               <span>Выберите друга</span>
               <b class="caret"></b>
             </a>
-            <ul class="dropdown-menu" id="vk_auth" role="menu" aria-labelledby="dLabel"></ul>
-          </li>
+            <ul class="dropdown-menu" id="vk_auth" role="menu" aria-labelledby="dLabel">
+              <li><a>Петр Холявко</a></li>
+              <li><a>Василий Вертушинский</a></li>
+              <li><a>Виола Петровская</a></li>
+            </ul>
+          </div>
         </ul>
-
+        <?php if ($image_src == '') { ?>
           <div class="row-fluid">
             <div class="" style="position:relative;">
               <div class="card">
                 <div style="width:0px;height:0px;overflow:hidden;" id="prev_container">
-                  <img src="/vkcard/img/samurai.jpg" id="preview" alt="Preview" class="jcrop-preview" />
+                  <img src="" id="preview" alt="Preview" class="jcrop-preview" />
                 </div>
               </div>
               <div class="vin_cont">
@@ -94,12 +95,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
           <input type="hidden" id="w" name="w" />
           <input type="hidden" id="h" name="h" />
           <input type="hidden" id="img" name="img" />
-          <input type="submit" class="btn" value="Crop Image" />
+          <input type="submit" class="btn btn-block" value="Crop Image" />
+          <?php } else {?>
+            <img src="/<?php echo $image_src; ?>" alt="Результат">
+            <a href="#" class="btn-block btn">Отправить на стену</a>
+          <?php } ?>
       </td>
       <td class="right_bar">
-        <p> <img src="/vkcard/img/samurai.jpg" alt="" id="cropbox" /> </p>
+        <?php if ($image_src == '') { ?>
+        <p> <img src="" alt="" id="cropbox" /> </p>
         <p>
-          <button class="btn btn-link drop" id="dropzone">Перетащите файл сюда или выберите с диска</button>
+          <span class="btn btn-link btn-block drop" id="dropzone">Перетащите файл сюда или выберите с диска</span>
           <p><small>Загрузите ваше фото, размером менее 1Mb</small></p>
           <div class="fix_block">
               <div id="progress" class="progress progress-striped hide">
@@ -112,30 +118,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         </p>
 
         <h3>Виньетки</h3>
-        <table class="table table-bordered">
+        <table class="table">
           <tr>
             <td>
-              <img src="/vignette/14_1.png" alt="">
+              <img width="80" src="/vignette/14_1.png" alt="">
               <label for=""><input class="vin" type="radio" value="1" checked name="vin" /></label>
             </td>
             <td>
-              <img src="/vignette/14_2.png" alt="">
+              <img width="80" src="/vignette/14_2.png" alt="">
               <label for=""><input class="vin" type="radio" value="2" name="vin" /></label>
             </td>
             <td>
-              <img src="/vignette/14_3.png" alt="">
+              <img width="80" src="/vignette/14_3.png" alt="">
               <label for=""><input class="vin" type="radio" value="3" name="vin" /></label>
             </td>
             <td>
-              <img src="/vignette/14_4.png" alt="">
+              <img width="80" src="/vignette/14_4.png" alt="">
               <label for=""><input class="vin" type="radio" value="4" name="vin" /></label>
             </td>
             <td>
-              <img src="/vignette/14_5.png" alt="">
+              <img width="80" src="/vignette/14_5.png" alt="">
               <label for=""><input class="vin" type="radio" value="5" name="vin" /></label>
             </td>
           </tr>
         </table>
+        <?php } ?>
       </td>
     </tr>
   </table>

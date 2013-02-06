@@ -74,8 +74,8 @@ class UploadHandler
             // The maximum number of files for the upload directory:
             'max_number_of_files' => null,
             // Image resolution restrictions:
-            'max_width' => 800,
-            'max_height' => 800,
+            'max_width' => 1600,
+            'max_height' => 1600,
             'min_width' => 1,
             'min_height' => 1,
             // Set the following option to false to enable resumable uploads:
@@ -93,17 +93,17 @@ class UploadHandler
                 ),
                 */
                 // Uncomment the following to create medium sized images:
-                /*
+                
                 'medium' => array(
-                    'max_width' => 800,
-                    'max_height' => 600,
+                    'max_width' => 400,
+                    'max_height' => 400,
                     'jpeg_quality' => 80
                 ),
-                */
+                /*
                 'thumbnail' => array(
                     'max_width' => 80,
                     'max_height' => 80
-                )
+                )*/
             )
         );
         if ($options) {
@@ -277,10 +277,15 @@ class UploadHandler
         if (!$img_width || !$img_height) {
             return false;
         }
+        
+        /*
         $scale = min(
             $options['max_width'] / $img_width,
             $options['max_height'] / $img_height
-        );
+        );*/
+        $scale = $options['max_width'] / $img_width;
+
+
         if ($scale >= 1) {
             if ($file_path !== $new_file_path) {
                 return copy($file_path, $new_file_path);
