@@ -84,3 +84,85 @@
 
 /* Fix for twitter bootstrap et al. */
 .jcrop-holder img,img.jcrop-preview{ max-width: none; }
+
+body {
+	padding: 10px;
+}
+.container {
+}
+.vin_cont {
+width: 315px;
+height: 420px;
+position: relative;
+margin-top: -420px;
+}
+.card {
+width:315px;
+height: 420px;
+background-color: #ddd;
+}
+.clone {
+position:absolute;
+width:250px;
+height:250px;
+/*background: rgba(221, 221, 221, 0.2);*/
+cursor: move;
+top:0px;
+left:0px;
+border: 1px solid rgba(221, 221, 221, 0);
+}
+.clone:hover{
+border: 1px solid rgba(221, 221, 221, 0.5);
+}
+.drop {
+	border: 1px dashed gray;
+}
+#inner_text {
+	cursor: move;
+	position: absolute;
+	width: 243px;
+	height: 100px;
+	top: 293px;
+	left: 36px;
+	border: 1px dashed #DDD;
+	white-space: pre;
+	font-family: 'Times New Roman';
+	font-size: 20px;
+}
+#inner_text p{
+	display:block;
+	padding: 0;
+	margin: 0;
+	white-space: pre;
+	font-family: 'Times New Roman';
+	font-size: 20px;
+}
+#inner_text:hover{
+	background-color: #fff;
+}
+.ui-resizable-se {
+	cursor: se-resize;
+	background-color: #000;
+	width: 8px;
+	z-index: 90;
+	height:8px;
+	right: -8px;
+	bottom: -8px;
+	position: absolute;
+}
+.main {
+	margin: 0;
+	padding: 0;
+	border:0;
+	width: 800px;
+	height: 800px;
+	overflow: hidden;
+	background-color: #ccc;
+}
+.main td {
+	vertical-align: top;
+}
+.main .left_bar {
+	width:315px;
+	overflow: hidden;
+}

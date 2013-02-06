@@ -21,6 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
   $image->compositeImage( $picture, Imagick::COMPOSITE_DEFAULT, $_POST['px'], $_POST['py'] );
 
+
+  // накладываем виньетку
   if ($_POST['vin'])
   {
     $vin = new Imagick('vignette/14_'.$_POST['vin'].'.png');
@@ -37,179 +39,107 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="marchukilya@gmail.com">
-    <!-- Le styles -->
-    <script src="http://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
-    <link href="/vkcard/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="/vkcard/css/jquery.Jcrop.css" type="text/css" />
-    <style type="text/css">
-      body {
-        padding-top: 10px;
-        padding-bottom: 40px;
-      }
-      .container {
-      }
-      .vin_cont {
-        width: 315px;
-        height: 420px;
-        position: relative;
-        margin-top: -420px;
-      }
-      .card {
-        width:315px;
-        height: 420px;
-        background-color: #ddd;
-      }
-      .clone {
-        position:absolute;
-        width:250px;
-        height:250px;
-        /*background: rgba(221, 221, 221, 0.2);*/
-        cursor: move;
-        top:0px;
-        left:0px;
-        border: 1px solid rgba(221, 221, 221, 0);
-      }
-      .clone:hover{
-        border: 1px solid rgba(221, 221, 221, 0.5);
-      }
-      .drop {
-        border: 1px dashed gray;
-      }
-      #inner_text {
-        cursor: move;
-        position: absolute;
-        width: 243px;
-        height: 100px;
-        top: 293px;
-        left: 36px;
-        border: 1px dashed #DDD;
-        white-space: pre;
-        font-family: 'Times New Roman';
-        font-size: 20px;
-      }
-      #inner_text p{
-        display:block;
-        padding: 0;
-        margin: 0;
-        white-space: pre;
-        font-family: 'Times New Roman';
-        font-size: 20px;
-      }
-      #inner_text:hover{
-        background-color: #fff;
-      }
-      .ui-resizable-se {
-        cursor: se-resize;
-        background-color: #000;
-        width: 8px;
-        z-index: 90;
-        height:8px;
-        right: -8px;
-        bottom: -8px;
-        position: absolute;
-        }
-    </style>
-    <link href="/vkcard/css/bootstrap-responsive.css" rel="stylesheet">
+<head>
+  <meta charset="utf-8">
+  <title>Bootstrap, from Twitter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="marchukilya@gmail.com">
+  <!-- Le styles -->
+  <script src="http://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
+  <link href="/vkcard/css/bootstrap.css" rel="stylesheet">
+  <link href="/vkcard/css/bootstrap-responsive.css" rel="stylesheet">
+  <link href="/vkcard/css/jquery.Jcrop.css" rel="stylesheet" />
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<form action="/index.php" method="post" onsubmit="return checkCoords();">
+  <table class="main">
+    <tr>
+      <td class="left_bar">
+        <ul class="nav nav-pills">
+          <li class="dropdown">
+            <a class="dropdown-toggle btn-link" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">
+              Выберите друга
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" id="vk_auth" role="menu" aria-labelledby="dLabel"></ul>
+          </li>
+        </ul>
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="container span12">
-    <form action="/index.php" method="post" onsubmit="return checkCoords();">
-      <div class="row">
-        <div class="span6">
-          <ul class="nav nav-pills">
-            <li class="dropdown">
-              <a class="dropdown-toggle btn-link" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">
-                Выберите друга
-                <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu" id="vk_auth" role="menu" aria-labelledby="dLabel"></ul>
-            </li>
-          </ul>
-
-            <div class="row-fluid">
-              <div class="span6" style="position:relative;">
-                <div class="card">
-                  <div style="width:0px;height:0px;overflow:hidden;" id="prev_container">
-                    <img src="/vkcard/img/samurai.jpg" id="preview" alt="Preview" class="jcrop-preview" />
-                  </div>
+          <div class="row-fluid">
+            <div class="span6" style="position:relative;">
+              <div class="card">
+                <div style="width:0px;height:0px;overflow:hidden;" id="prev_container">
+                  <img src="/vkcard/img/samurai.jpg" id="preview" alt="Preview" class="jcrop-preview" />
                 </div>
-                <div class="vin_cont">
-                    <img width="100%" src="/vignette/14_1.png">
-                    <div id="inner_text"><p></p></div>
-                </div>
-                <div class="clone"></div>
-                <textarea id="text" name="text" style="width: 302px; margin: 10px 0px 10px; height: 72px;"></textarea>
               </div>
+              <div class="vin_cont">
+                  <img width="100%" src="/vignette/14_1.png">
+                  <div id="inner_text"><p></p></div>
+              </div>
+              <div class="clone"></div>
+              <textarea id="text" name="text" style="width: 302px; margin: 10px 0px 10px; height: 72px;"></textarea>
             </div>
-            <input type="hidden" id="px" name="px" value="1" />
-            <input type="hidden" id="py" name="py" value="1" />
-            <input type="hidden" id="tx" name="tx" value="36" />
-            <input type="hidden" id="ty" name="ty" value="293" />
-            <input type="hidden" id="x" name="x" />
-            <input type="hidden" id="y" name="y" />
-            <input type="hidden" id="w" name="w" />
-            <input type="hidden" id="h" name="h" />
-            <input type="hidden" id="img" name="img" />
-            <input type="submit" class="btn" value="Crop Image" />
-        </div>
-        <div class="span4">
-          <p> <img src="/vkcard/img/samurai.jpg" alt="" id="cropbox" /> </p>
-          <p>
-            <button class="btn btn-link drop" id="dropzone">Перетащите файл сюда или выберите с диска</button>
-            <p><small>Загрузите ваше фото, размером менее 1Mb</small></p>
-            <div class="fix_block">
-                <div id="progress" class="progress progress-striped hide">
-                    <div class="bar" style="width: 0%;"></div>
-                </div>
-            </div>
-            <input id="fileupload" type="file" class="hidden" name="files[]" data-url="/upload.php" />
-            <span id="upload_inf"></span>
-            <div id="upload_alert"></div>
-          </p>
+          </div>
+          <input type="hidden" id="px" name="px" value="1" />
+          <input type="hidden" id="py" name="py" value="1" />
+          <input type="hidden" id="tx" name="tx" value="36" />
+          <input type="hidden" id="ty" name="ty" value="293" />
+          <input type="hidden" id="x" name="x" />
+          <input type="hidden" id="y" name="y" />
+          <input type="hidden" id="w" name="w" />
+          <input type="hidden" id="h" name="h" />
+          <input type="hidden" id="img" name="img" />
+          <input type="submit" class="btn" value="Crop Image" />
+      </td>
+      <td class="right_bar">
+        <p> <img src="/vkcard/img/samurai.jpg" alt="" id="cropbox" /> </p>
+        <p>
+          <button class="btn btn-link drop" id="dropzone">Перетащите файл сюда или выберите с диска</button>
+          <p><small>Загрузите ваше фото, размером менее 1Mb</small></p>
+          <div class="fix_block">
+              <div id="progress" class="progress progress-striped hide">
+                  <div class="bar" style="width: 0%;"></div>
+              </div>
+          </div>
+          <input id="fileupload" type="file" class="hidden" name="files[]" data-url="/upload.php" />
+          <span id="upload_inf"></span>
+          <div id="upload_alert"></div>
+        </p>
 
-          <h3>Виньетки</h3>
-          <table class="table table-bordered">
-            <tr>
-              <td>
-                <img src="/vignette/14_1.png" alt="">
-                <label for=""><input class="vin" type="radio" value="1" checked name="vin" /></label>
-              </td>
-              <td>
-                <img src="/vignette/14_2.png" alt="">
-                <label for=""><input class="vin" type="radio" value="2" name="vin" /></label>
-              </td>
-              <td>
-                <img src="/vignette/14_3.png" alt="">
-                <label for=""><input class="vin" type="radio" value="3" name="vin" /></label>
-              </td>
-              <td>
-                <img src="/vignette/14_4.png" alt="">
-                <label for=""><input class="vin" type="radio" value="4" name="vin" /></label>
-              </td>
-              <td>
-                <img src="/vignette/14_5.png" alt="">
-                <label for=""><input class="vin" type="radio" value="5" name="vin" /></label>
-              </td>
-            </tr>
-          </table>
-        </div>
-        </form>
-      </div>
-      <footer>
-        <p>&copy; Developed by <a href="http://showdev.ru" title="showdev.ru">showdev.ru</a></p>
-      </footer>
-    </div>
+        <h3>Виньетки</h3>
+        <table class="table table-bordered">
+          <tr>
+            <td>
+              <img src="/vignette/14_1.png" alt="">
+              <label for=""><input class="vin" type="radio" value="1" checked name="vin" /></label>
+            </td>
+            <td>
+              <img src="/vignette/14_2.png" alt="">
+              <label for=""><input class="vin" type="radio" value="2" name="vin" /></label>
+            </td>
+            <td>
+              <img src="/vignette/14_3.png" alt="">
+              <label for=""><input class="vin" type="radio" value="3" name="vin" /></label>
+            </td>
+            <td>
+              <img src="/vignette/14_4.png" alt="">
+              <label for=""><input class="vin" type="radio" value="4" name="vin" /></label>
+            </td>
+            <td>
+              <img src="/vignette/14_5.png" alt="">
+              <label for=""><input class="vin" type="radio" value="5" name="vin" /></label>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
     <script type="text/javascript" src="/vkcard/js/jquery.min.js"></script>
     <script type="text/javascript" src="/vkcard/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/vkcard/js/jquery.ui.widget.js"></script>
@@ -217,215 +147,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     <script type="text/javascript" src="/vkcard/js/jquery.fileupload.js"></script>
     <script type="text/javascript" src="/vkcard/js/jquery.Jcrop.js"></script>
     <script type="text/javascript" src="/vkcard/js/jquery-ui-1.10.0.custom.min.js"></script>
-    <script type="text/javascript">
-$(function(){
-  $('#dropzone').click(function(){
-      $('#fileupload').click();
-  });
-  
-  var jqXHR;
-  jqXHR = $('#fileupload').fileupload({
-      dataType: 'json',
-      done: function (e, data) {
-          
-          var error = 0;
-
-          $.each(data.result.files, function (index, file) {
-            
-
-            if (file.error) {
-              error = 1
-              my_alert(file.error);
-            } else {
-
-              $('#cropbox, #preview').attr('src',file.url);
-
-              var img = new Image();
-              img.onload = function() {
-                var new_w = this.width;
-                var new_h = this.height;
-
-                jcrop_api.destroy();
-                jcrop_api.disable();
-                jcrop_api.enable();
-
-                $('#cropbox, #preview').css({width: new_w, height: new_h});
-
-                $('#cropbox').Jcrop({
-                  trueSize: [new_w,new_h],
-                  onChange: updatePreview,
-                  onSelect: updatePreview,
-                  aspectRatio: 1,
-                },function(){
-                  // Use the API to get the real image size
-                  var bounds = this.getBounds();
-                  boundx = bounds[0];
-                  boundy = bounds[1];
-                  // Store the API in the jcrop_api variable
-                  jcrop_api = this;
-                });
-              }
-              img.src = file.url;
-
-            }
-          });
-          $('#progress').fadeOut();
-
-          if (!error)
-            $('#upload_alert').hide();
-          
-          $('#dropzone').html('Перетащите файл сюда или выберите с диска');
-      },
-      dropZone: $('.drop'),
-
-      drop: function(e, data){
-          if (data.files.length > 1) {
-            my_alert('Вы можете добавлять файлы только по одному');
-            return false;
-          }
-
-          $.each(data.files, function (index, file) {
-            if ( /^.*\.(png|gif|jpe?g)$/.test(file.name) ) {
-                $('#dropzone').html(file.name);
-            } else {
-                my_alert('Недопустимый формат');
-                jqXHR.abort();
-                return false;
-            }
-          });
-      },
-      change: function(e, data){
-          $.each(data.files, function (index, file) {
-            if ( /^.*\.(png|gif|jpe?g)$/.test(file.name) ) {
-                $('#dropzone').html(file.name);
-            } else {
-                my_alert('Недопустимый формат');
-                jqXHR.abort();
-                return false;
-            }
-          }); 
-      },
-      progressall: function (e, data) {
-        $('#progress').show();
-        var progress = parseInt(data.loaded / data.total * 100, 10);
-        $('#progress .bar').css(
-            'width',
-            progress + '%'
-        );
-      },
-  }).error(function (jqXHR, textStatus, errorThrown) {
-      if (errorThrown === 'abort') {
-          alert('File Upload has been canceled');
-      }
-  });
-
-  var jcrop_api;
-
-  $('#cropbox').Jcrop({
-    onChange: updatePreview,
-    onSelect: updatePreview,
-    aspectRatio: 1,
-  },function(){
-    // Use the API to get the real image size
-    var bounds = this.getBounds();
-    boundx = bounds[0];
-    boundy = bounds[1];
-    // Store the API in the jcrop_api variable
-    jcrop_api = this;
-  });
-
-  $('#prev_container, .clone').draggable({
-    containment: ".card",
-    stop: function( event, ui ) {
-      $('#prev_container, .clone').css({left:ui.position.left,top:ui.position.top});
-      $('#px').val(ui.position.left);
-      $('#py').val(ui.position.top);
-    }
-  });
-
-  $("#inner_text" ).resizable();
-
-  $('#inner_text').draggable({
-    containment: ".vin_cont",
-    stop: function( event, ui ) {
-      $('#tx').val(ui.position.left);
-      $('#ty').val(ui.position.top);
-    }
-  });
-
-  /*$( ".card" ).droppable({          
-    accept: "#prev_container",
-    activeClass: "ui-state-hover",
-    hoverClass: "ui-state-active",
-    drop: function( event, ui ) {
-      console.log(ui);
-    }
-  });*/
-  $('.vin').click(function(){
-    $('.vin_cont img').attr('src','/vignette/14_'+$(this).val()+'.png');
-    $('.vin_cont').show();
-    $('#text').show();
-  });
-
-  $('#text').keyup(function(){
-    $('#inner_text p').html($('#text').val());
-  });
-});
-
-function updateCoords(c) {};
-
-function checkCoords(){
-  if (parseInt($('#w').val())) return true;
-  alert('Please select a crop region then press submit.');
-  return false;
-};
-
-function updatePreview(c){
-  //updateCoords
-  $('#x').val(c.x);
-  $('#y').val(c.y);
-  $('#w').val(c.w);
-  $('#h').val(c.h);
-  $('#img').val( $('#cropbox').attr('src') );
-
-
-  if (parseInt(c.w) > 0) {
-    var rx = 250 / c.w;
-    var ry = 250 / c.h;
-
-    $('#preview').css({
-      //width: Math.round(rx * boundx) + 'px',
-      //height: Math.round(ry * boundy) + 'px',
-      //marginLeft: '-' + Math.round(rx * c.x) + 'px',
-      //marginTop: '-' + Math.round(ry * c.y) + 'px'
-      marginLeft: '-' + c.x + 'px',
-      marginTop: '-' + c.y + 'px'
-    });
-    
-    $('#prev_container, .clone').css({ width: c.w + 'px', height:  c.h + 'px'});
-  }
-};
-
-function my_alert(message){
-    $('#upload_alert h4, #upload_alert p').remove();
-    var alert = '<h4>Warning!</h4><p>'+message+'</p>';
-    $('#upload_alert').append(alert).show();
-}
-
-window.onload = function () {
-  VK.init({apiId: 3392840});
-
-  VK.api('friends.get', {fields:"first_name,last_name,photo"}, function(data) {
-    var frCount = data.response.length;
-
-    var onlineStr = '';
-
-    for (var i=0; i<frCount; i++) {
-      onlineStr += '<li data-value="' + data.response[i].uid + '">' + data.response[i].first_name + ' ' + data.response[i].last_name + '</li>';
-    }
-    var listdiv  = document.getElementById('vk_auth').innerHTML=onlineStr;
-  });
-}
-    </script>
+    <script type="text/javascript" src="/vkcard/js/main.js"></script>
   </body>
 </html>
