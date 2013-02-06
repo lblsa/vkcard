@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         <ul class="nav nav-pills">
           <li class="dropdown">
             <a class="dropdown-toggle btn-link" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">
-              Выберите друга
+              <span>Выберите друга</span>
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu" id="vk_auth" role="menu" aria-labelledby="dLabel"></ul>
@@ -71,14 +71,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         </ul>
 
           <div class="row-fluid">
-            <div class="span6" style="position:relative;">
+            <div class="" style="position:relative;">
               <div class="card">
                 <div style="width:0px;height:0px;overflow:hidden;" id="prev_container">
                   <img src="/vkcard/img/samurai.jpg" id="preview" alt="Preview" class="jcrop-preview" />
                 </div>
               </div>
               <div class="vin_cont">
-                  <img width="100%" src="/vignette/14_1.png">
+                  <img width="315" src="/vignette/14_1.png">
                   <div id="inner_text"><p></p></div>
               </div>
               <div class="clone"></div>
@@ -147,6 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     <script type="text/javascript" src="/vkcard/js/jquery.fileupload.js"></script>
     <script type="text/javascript" src="/vkcard/js/jquery.Jcrop.js"></script>
     <script type="text/javascript" src="/vkcard/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script type="text/javascript" src="/vkcard/js/underscore-min.js"></script>
     <script type="text/javascript" src="/vkcard/js/main.js"></script>
   </body>
 </html>

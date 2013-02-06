@@ -150,6 +150,13 @@ $(function(){
   $('#text').keyup(function(){
     $('#inner_text p').html($('#text').val());
   });
+
+  $('#vk_auth a').click(function(){
+    $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
+    
+    var i = $(this).attr('data-i');
+    console.log(data.response[i]);
+  });
 });
 
 function updateCoords(c) {};
@@ -192,17 +199,21 @@ function my_alert(message){
     $('#upload_alert').append(alert).show();
 }
 
-var t;
+var users;
 window.onload = function () {
   VK.init({apiId: 3392840});
 
   VK.api('friends.get', {fields:"first_name,last_name,photo"}, function(data) {
     var frCount = data.response.length;
-    t = data.response;
+    users = data.response;
     var onlineStr = '';
 
     for (var i=0; i<frCount; i++) {
-      onlineStr += '<li data-value="' + data.response[i].uid + '">' + data.response[i].first_name + ' ' + data.response[i].last_name + '</li>';
+      onlineStr += '<li>'+
+                      '<a href="" data-i="'+i+'" data-value="' + data.response[i].uid + '" data-photo="'+data.response[i].photo+'">'
+                         + data.response[i].first_name + ' ' + data.response[i].last_name + 
+                      '</a>'+
+                    '</li>';
     }
     var listdiv  = $('#vk_auth').html(onlineStr);
   });
