@@ -151,6 +151,14 @@ $(function(){
     $('#inner_text p').html($('#text').val());
   });
 
+  $('#vk_auth span').click(function(){
+    $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
+
+    var i = $(this).attr('data-i');
+    console.log(users[i]);
+    return false;
+  });
+
 });
 
 function updateCoords(c) {};
