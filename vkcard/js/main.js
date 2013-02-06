@@ -197,15 +197,13 @@ var users;
 window.onload = function () {
   //{apiId: 3392840}
   VK.init(function(){
-    $(function(){
-      $('#vk_auth').on('click','#vk_auth span', function(){
+      $('#vk_auth span').click(function(){
         $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
 
         var i = $(this).attr('data-i');
         console.log(users[i]);
         return false;
       });
-    }); 
   });
 
   VK.api('friends.get', {fields:"first_name,last_name,photo"}, function(data) {
