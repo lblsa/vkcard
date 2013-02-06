@@ -153,9 +153,10 @@ $(function(){
 
   $('#vk_auth a').click(function(){
     $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
-    
+
     var i = $(this).attr('data-i');
     console.log(data.response[i]);
+    return false;
   });
 });
 
