@@ -216,11 +216,7 @@ window.onload = function () {
     $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
 
     var i = $(this).attr('data-i');
-    console.log(data.response[i]);
+    console.log(users[i]);
     return false;
-  });
-
-  $("#vk_auth").click(function() {
-    alert("Handler for .click() called.");
   });
 }
