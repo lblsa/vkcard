@@ -159,6 +159,11 @@ $(function(){
     return false;
   });
 
+  $("#vk_auth span").on('click', function(e){
+    alert('hello world');
+    console.log(e);
+   });
+
 });
 
 function updateCoords(c) {};
