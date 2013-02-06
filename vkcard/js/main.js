@@ -211,9 +211,9 @@ window.onload = function () {
 
     for (var i=0; i<frCount; i++) {
       onlineStr += '<li>'+
-                      '<a href="" data-i="'+i+'" data-value="' + data.response[i].uid + '" data-photo="'+data.response[i].photo+'">'
+                      '<span class="btn" data-i="'+i+'" data-value="' + data.response[i].uid + '" data-photo="'+data.response[i].photo+'">'
                          + data.response[i].first_name + ' ' + data.response[i].last_name + 
-                      '</a>'+
+                      '</span>'+
                     '</li>';
     }
     var listdiv  = $('#vk_auth').html(onlineStr);
