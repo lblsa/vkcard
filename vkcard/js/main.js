@@ -195,7 +195,18 @@ function my_alert(message){
 
 var users;
 window.onload = function () {
-  VK.init({apiId: 3392840});
+  //{apiId: 3392840}
+  VK.init(function(){
+    $(function(){
+      $('#vk_auth').on('click','#vk_auth span', function(){
+        $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
+
+        var i = $(this).attr('data-i');
+        console.log(users[i]);
+        return false;
+      });
+    }); 
+  });
 
   VK.api('friends.get', {fields:"first_name,last_name,photo"}, function(data) {
     var frCount = data.response.length;
@@ -215,12 +226,3 @@ window.onload = function () {
 }
 
 
-$(function(){
-  $('#vk_auth').on('click','#vk_auth span', function(){
-    $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
-
-    var i = $(this).attr('data-i');
-    console.log(users[i]);
-    return false;
-  });
-});
