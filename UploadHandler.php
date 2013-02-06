@@ -269,6 +269,9 @@ class UploadHandler
             if (!is_dir($version_dir)) {
                 mkdir($version_dir, $this->options['mkdir_mode'], true);
             }
+            if (!is_dir('files/result')) {
+                mkdir('files/result', $this->options['mkdir_mode'], true);
+            }
             $new_file_path = $version_dir.'/'.$file_name;
         } else {
             $new_file_path = $file_path;
