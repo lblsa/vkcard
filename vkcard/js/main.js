@@ -212,6 +212,10 @@ window.onload = function () {
     $('#vk_auth').html(onlineStr);
   });
 
+}
+
+
+$(function(){
   $('#vk_auth').on('click','#vk_auth span', function(){
     $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
 
@@ -219,4 +223,4 @@ window.onload = function () {
     console.log(users[i]);
     return false;
   });
-}
+});
