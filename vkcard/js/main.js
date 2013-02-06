@@ -151,13 +151,6 @@ $(function(){
     $('#inner_text p').html($('#text').val());
   });
 
-  $('#vk_auth span').click(function(){
-    $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
-
-    var i = $(this).attr('data-i');
-    console.log(data.response[i]);
-    return false;
-  });
 });
 
 function updateCoords(c) {};
@@ -217,5 +210,13 @@ window.onload = function () {
                     '</li>';
     }
     $('#vk_auth').html(onlineStr);
+  });
+  
+  $('#vk_auth span').click(function(){
+    $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
+
+    var i = $(this).attr('data-i');
+    console.log(data.response[i]);
+    return false;
   });
 }
