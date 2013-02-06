@@ -211,12 +211,16 @@ window.onload = function () {
     }
     $('#vk_auth').html(onlineStr);
   });
-  
-  $('#vk_auth span').click(function(){
+
+  $('#vk_auth').on('click','#vk_auth span', function(){
     $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
 
     var i = $(this).attr('data-i');
     console.log(data.response[i]);
     return false;
+  });
+
+  $("#vk_auth").click(function() {
+    alert("Handler for .click() called.");
   });
 }
