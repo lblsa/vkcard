@@ -174,15 +174,18 @@ $(function(){
     return false;
   });
 
+
+  $('#body').on('click','#vk_auth span',function(){
+    user = users[parseInt($(this).attr('data-i'))];
+    $('#dLabel span').html(user.first_name + ' ' + user.last_name+'<img src="'+user.photo+'" />');
+    $('#user_photo').attr('src',user.photo);
+    $('#user_name').html(user.first_name + ' ' + user.last_name);
+    $('.dropdown').removeClass('open');
+    return false;
+  });
+
 //{apiId: 3392840}
   VK.init(function(){
-    $('.dropdown-menu li').click(function(){
-        $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
-
-        var i = $(this).attr('data-i');
-        console.log(users[i], this);
-        return false;
-        });
 
     VK.api('friends.get', {fields:"first_name,last_name,photo"}, function(data) {
         var frCount = data.response.length;
@@ -198,13 +201,6 @@ $(function(){
         }
 
         $('#vk_auth').html(onlineStr);
-
-        $('#body').on('click','#vk_auth span',function(){
-          user = users[parseInt($(this).attr('data-i'))];
-          $('#dLabel span').html(user.first_name + ' ' + user.last_name+'<img src="'+user.photo+'" />');
-          $('.dropdown').removeClass('open');
-          return false;
-        });
     });
   });
 });

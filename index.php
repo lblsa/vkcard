@@ -102,9 +102,19 @@
       </td>
     </tr>
   </table>
-  <div id="result">
-    <img src="" border="0" id="result_image" />
-    <a href="#" class="btn btn-block">Отправить на стену другу</a>
+  <div class="row" id="result">
+    <div class="span6">
+      <div class="media">
+        <a class="pull-left" href="#">
+          <img class="media-object" src="" id="user_photo" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading" id="user_name"></h4>
+        </div>
+      </div>
+      <img src="" border="0" id="result_image" />
+      <a href="#" class="btn ">Отправить на стену другу</a>
+    </div>
   </div>
 </form>
     <script type="text/javascript" src="/vkcard/js/jquery.min.js"></script>
