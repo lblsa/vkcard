@@ -174,14 +174,14 @@ $(function(){
     return false;
   });
 
-  $('').click(function(){
+  $('#post_to_wall').click(function(){
     var args = {
         owner_id: user.uid,
         message: 'test',
         attachments : 'photo8253453_265663151,http://'+$('#result_image').attr('src') // <type><owner_id>_<media_id>
     };
 
-    VK.Api.call('wall.post', args, function(r){
+    VK.api('wall.post', args, function(r){
       if (r.response) {
           console.log(r.response.post_id);
       }
