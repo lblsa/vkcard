@@ -206,7 +206,7 @@ function my_alert(message){
 var users;
 window.onload = function () {
   //{apiId: 3392840}
-  /*
+  
   VK.init(function(){
       $('#vk_auth span').click(function(){
         $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
@@ -231,7 +231,7 @@ window.onload = function () {
     }
     $('#vk_auth').html(onlineStr);
   });
-  */
+  
 }
 
 function select_user(i){

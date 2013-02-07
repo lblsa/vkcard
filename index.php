@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
   <meta name="description" content="">
   <meta name="author" content="marchukilya@gmail.com">
   <!-- Le styles -->
-  <!-- <script src="http://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script> -->
+  <script src="http://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
   <link href="/vkcard/css/bootstrap.css" rel="stylesheet">
   <link href="/vkcard/css/bootstrap-responsive.css" rel="stylesheet">
   <link href="/vkcard/css/jquery.Jcrop.css" rel="stylesheet" />
