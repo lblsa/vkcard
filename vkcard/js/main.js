@@ -156,7 +156,8 @@ $(function(){
       h:$('#h').val(),
       w:$('#w').val(),
       vin:$('.vin').val(),
-      img:$('#img').val()
+      img:$('#img').val(),
+      text:$('#text').val()
     }
 
     $.ajax({
