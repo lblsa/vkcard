@@ -165,7 +165,9 @@ $(function(){
       data:data,
       dataType: "html"
     }).done(function( result ) {
-      console.log(result);
+      $('.main').fadeOut();
+      $('#result_image').attr('src','/'+result);
+      $('#result').fadeIn();
     });
 
     return false;

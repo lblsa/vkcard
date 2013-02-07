@@ -60,7 +60,6 @@
           <input type="submit" class="btn btn-block" id="crop" value="Go!" />
       </td>
       <td class="right_bar">
-        <?php if ($image_src == '') { ?>
         <p> <img src="" alt="" id="cropbox" /> </p>
         <p>
           <span class="btn btn-link btn-block drop" id="dropzone">Перетащите файл сюда или выберите с диска</span>
@@ -100,10 +99,13 @@
             </td>
           </tr>
         </table>
-        <?php } ?>
       </td>
     </tr>
   </table>
+  <div id="result">
+    <img src="" border="0" id="result_image" />
+    <a href="#" class="btn btn-block">Отправить на стену другу</a>
+  </div>
 </form>
     <script type="text/javascript" src="/vkcard/js/jquery.min.js"></script>
     <script type="text/javascript" src="/vkcard/js/bootstrap.min.js"></script>
