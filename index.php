@@ -1,40 +1,3 @@
-<?php
-$image_src = '';
-if ($_SERVER['REQUEST_METHOD'] == 'POST')
-{
-
-  if (strpos($_POST['img'],'://')>0){
-    $blah = parse_url($_POST['img']);
-    $_POST['img'] = $blah['path'];
-  }
-
-  $draw = new ImagickDraw();
-  $draw->setFont('tnr.ttf');
-  $draw->setFontSize(20);
-
-  $image = new Imagick();
-  $image->newImage(315, 420, new ImagickPixel('white'));
-  $image->setImageFormat('jpg');
-
-  $src = substr($_POST['img'], 1);
-  $picture = new Imagick($src);
-  $picture->cropImage($_POST['w'], $_POST['h'], $_POST['x'], $_POST['y']);
-
-  $image->compositeImage( $picture, Imagick::COMPOSITE_DEFAULT, $_POST['px'], $_POST['py'] );
-
-
-  // накладываем виньетку
-  if ($_POST['vin'])
-  {
-    $vin = new Imagick('vignette/14_'.$_POST['vin'].'.png');
-    $image->compositeImage( $vin, Imagick::COMPOSITE_DEFAULT, 0, 0 );
-  }
-
-  $image->annotateImage($draw, $_POST['tx']-2, $_POST['ty']+18, 0, $_POST['text']);
-  $image_src = 'files/result/'.time().'.jpg';
-  $image->writeImage($image_src);
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
   <![endif]-->
 </head>
 <body id="body">
-<form action="/" method="post" onsubmit="return checkCoords();">
+<form action="/crop.php" method="post" onsubmit="return checkCoords();">
   <table class="main">
     <tr>
       <td class="left_bar">
@@ -70,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             </ul>
           </div>
         </ul>
-        <?php if ($image_src == '') { ?>
           <div class="row-fluid">
             <div class="" style="position:relative;">
               <div class="card">
@@ -96,10 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
           <input type="hidden" id="h" name="h" />
           <input type="hidden" id="img" name="img" />
           <input type="submit" class="btn btn-block" value="Crop Image" />
-          <?php } else {?>
-            <img src="/<?php echo $image_src; ?>" alt="Результат">
-            <a href="#" class="btn-block btn">Отправить на стену</a>
-          <?php } ?>
       </td>
       <td class="right_bar">
         <?php if ($image_src == '') { ?>

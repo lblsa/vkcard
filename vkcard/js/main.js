@@ -1,4 +1,4 @@
-var users;
+var users, user;
 $(function(){
   $('#dropzone').click(function(){
       $('#fileupload').click();
@@ -171,8 +171,9 @@ $(function(){
         $('#vk_auth').html(onlineStr);
 
         $('#body').on('click','#vk_auth span',function(){
-          var i = $(this).attr('data-i');
-          $('#dLabel span').html(users[i].first_name + ' ' + users[i].last_name+'<img src="'+users[i].photo+'" />');
+          user = users[parseInt($(this).attr('data-i'))];
+          $('#dLabel span').html(user.first_name + ' ' + user.last_name+'<img src="'+user.photo+'" />');
+          $('.dropdown').removeClass('open');
           return false;
         });
     });
