@@ -153,44 +153,48 @@ $(function(){
     $('#inner_text p').html($('#text').val());
   });
 
-  $('.dropdown-menu li').click(function(){
-    $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
-
-    var i = $(this).attr('data-i');
-    console.log(users[i], this);
-    return false;
-  });
-
-  $("#vk_auth span").on('click', function(e){
-    alert('hello world');
-    console.log(e);
-   });
 //{apiId: 3392840}
   VK.init(function(){
-      $('#vk_auth span').click(function(){
-        $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
+          $('.dropdown-menu li').click(function(){
+              $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
 
-        var i = $(this).attr('data-i');
-        console.log(users[i]);
-        return false;
-      });
+              var i = $(this).attr('data-i');
+              console.log(users[i], this);
+              return false;
+              });
+
+          VK.api('friends.get', {fields:"first_name,last_name,photo"}, function(data) {
+              var frCount = data.response.length;
+              users = data.response;
+              var onlineStr = '';
+
+              for (var i=0; i<frCount; i++) {
+              onlineStr += '<li>'+
+              '<span class="btn btn-block" data-i="'+i+'" data-value="' + data.response[i].uid + '" data-photo="'+data.response[i].photo+'">'
+              + data.response[i].first_name + ' ' + data.response[i].last_name + 
+              '</span>'+
+              '</li>'; // onclick="select_user('+i+'); return false;" 
+              }
+
+              $('#vk_auth').html(onlineStr);
+
+              $("#vk_auth span").on('click', function(e){
+//      alert('hello world');
+                  console.log(e);
+                  });
+
+              $('#vk_auth span').click(function(){
+                  $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
+
+                  var i = $(this).attr('data-i');
+                  console.log(users[i]);
+                  return false;
+                  });
+
+
+          });
+
   });
-
-  VK.api('friends.get', {fields:"first_name,last_name,photo"}, function(data) {
-    var frCount = data.response.length;
-    users = data.response;
-    var onlineStr = '';
-
-    for (var i=0; i<frCount; i++) {
-      onlineStr += '<li>'+
-                      '<span class="btn btn-block" data-i="'+i+'" data-value="' + data.response[i].uid + '" data-photo="'+data.response[i].photo+'">'
-                         + data.response[i].first_name + ' ' + data.response[i].last_name + 
-                      '</span>'+
-                    '</li>'; // onclick="select_user('+i+'); return false;" 
-    }
-    $('#vk_auth').html(onlineStr);
-  });
-
 });
 
 function updateCoords(c) {};
@@ -229,11 +233,12 @@ function my_alert(message){
     $('#upload_alert').append(alert).show();
 }
 
-window.onload = function () {}
+window.onload = function () {
 
 function select_user(i){
   $('#dLabel span').html($('[data-i='+i+']').html()+'<img src="'+users[i].photo+'" />');
   console.log(users[i]);
+}
 }
 
 
