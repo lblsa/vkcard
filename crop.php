@@ -1,5 +1,11 @@
 <?php
+
+error_reporting(E_ALL);
+
+
+
 $image_src = '';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 
@@ -38,6 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
   die;
 
 } else {
-  echo 'empty data'
+  echo 'empty data';
 }
 ?>
