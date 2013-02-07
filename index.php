@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 </head>
-<body>
+<body id="body">
 <form action="/" method="post" onsubmit="return checkCoords();">
   <table class="main">
     <tr>
