@@ -161,7 +161,7 @@ $(function(){
     return false;
   });
 
-  $("#vk_auth span").on('click', function(e){
+  $("#ищвн").on('click', '#vk_auth span', function(e){
     alert('hello world');
     console.log(e);
    });
@@ -175,6 +175,7 @@ $(function(){
         return false;
       });
   });
+
 
   VK.api('friends.get', {fields:"first_name,last_name,photo"}, function(data) {
     var frCount = data.response.length;
