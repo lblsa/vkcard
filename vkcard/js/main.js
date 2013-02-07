@@ -146,47 +146,53 @@ $(function(){
   });
 
   $('#crop').click(function(){
-    var data = {
-      px:$('#px').val(),
-      tx:$('#tx').val(),
-      py:$('#py').val(),
-      ty:$('#ty').val(),
-      x:$('#x').val(),
-      y:$('#y').val(),
-      h:$('#h').val(),
-      w:$('#w').val(),
-      vin:$('.vin').val(),
-      img:$('#img').val(),
-      text:$('#text').val()
+    if (user) {
+      var data = {
+        px:$('#px').val(),
+        tx:$('#tx').val(),
+        py:$('#py').val(),
+        ty:$('#ty').val(),
+        x:$('#x').val(),
+        y:$('#y').val(),
+        h:$('#h').val(),
+        w:$('#w').val(),
+        vin:$('.vin').val(),
+        img:$('#img').val(),
+        text:$('#text').val()
+      }
+
+      $.ajax({
+        type: "POST",
+        url: "/crop.php",
+        data:data,
+        dataType: "html"
+      }).done(function( result ) {
+        $('.main').fadeOut();
+        $('#result_image').attr('src','/'+result);
+        $('#result').fadeIn();
+      });
+    } else {
+     alert('Необходимо выбрать друга');
     }
-
-    $.ajax({
-      type: "POST",
-      url: "/crop.php",
-      data:data,
-      dataType: "html"
-    }).done(function( result ) {
-      $('.main').fadeOut();
-      $('#result_image').attr('src','/'+result);
-      $('#result').fadeIn();
-    });
-
     return false;
   });
 
   $('#post_to_wall').click(function(){
-    var args = {
-        owner_id: user.uid,
-        message: 'test',
-        attachments : 'photo8253453_265663151,http://'+$('#result_image').attr('src') // <type><owner_id>_<media_id>
-    };
+    if (user){
+      var args = {
+          owner_id: user.uid,
+          message: 'test',
+          attachments : 'photo8253453_265663151,http://'+$('#result_image').attr('src') // <type><owner_id>_<media_id>
+      };
 
-    VK.api('wall.post', args, function(r){
-      if (r.response) {
-          console.log(r.response.post_id);
-      }
-    });
-
+      VK.api('wall.post', args, function(r){
+        if (r.response) {
+            console.log(r.response.post_id);
+        }
+      });
+    } else {
+      alert('вы не выбрали друга');
+    }
     return false;
   });
 
