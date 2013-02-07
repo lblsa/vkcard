@@ -145,6 +145,31 @@ $(function(){
     $('#inner_text p').html($('#text').val());
   });
 
+  $('#crop').click(function(){
+    var data = {
+      px:$('#px').val(),
+      tx:$('#tx').val(),
+      py:$('#py').val(),
+      ty:$('#ty').val(),
+      x:$('#x').val(),
+      y:$('#y').val(),
+      h:$('#h').val(),
+      w:$('#w').val(),
+      img:$('#img').val()
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "/crop.php",
+      data:data,
+      dataType: "html"
+    }).done(function( result ) {
+      console.log(result);
+    });
+
+    return false;
+  });
+
 //{apiId: 3392840}
   VK.init(function(){
     $('.dropdown-menu li').click(function(){

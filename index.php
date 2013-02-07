@@ -57,7 +57,7 @@
           <input type="hidden" id="w" name="w" />
           <input type="hidden" id="h" name="h" />
           <input type="hidden" id="img" name="img" />
-          <input type="submit" class="btn btn-block" value="Crop Image" />
+          <input type="submit" class="btn btn-block" id="crop" value="Go!" />
       </td>
       <td class="right_bar">
         <?php if ($image_src == '') { ?>
