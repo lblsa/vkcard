@@ -153,11 +153,11 @@ $(function(){
     $('#inner_text p').html($('#text').val());
   });
 
-  $('#vk_auth span').click(function(){
+  $('.dropdown-menu li').click(function(){
     $('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
 
     var i = $(this).attr('data-i');
-    console.log(users[i]);
+    console.log(users[i], this);
     return false;
   });
 
