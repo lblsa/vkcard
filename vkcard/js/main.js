@@ -235,9 +235,7 @@ window.onload = function () {
 }
 
 function select_user(i){
-  //$('#dLabel span').html($(this).html()+'<img src="'+$(this).attr('data-photo')+'" />');
-  alert(1);
-  console.log($('[data-i='+i+']'));
+  $('#dLabel span').html($('[data-i='+i+']').html()+'<img src="'+users[i].photo+'" />');
   console.log(users[i]);
 }
 
