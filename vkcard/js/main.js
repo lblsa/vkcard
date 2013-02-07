@@ -183,10 +183,10 @@ $(function(){
 
     for (var i=0; i<frCount; i++) {
       onlineStr += '<li>'+
-                      '<span onclick="select_user('+i+'); return false;" class="btn btn-block" data-i="'+i+'" data-value="' + data.response[i].uid + '" data-photo="'+data.response[i].photo+'">'
+                      '<span class="btn btn-block" data-i="'+i+'" data-value="' + data.response[i].uid + '" data-photo="'+data.response[i].photo+'">'
                          + data.response[i].first_name + ' ' + data.response[i].last_name + 
                       '</span>'+
-                    '</li>';
+                    '</li>'; // onclick="select_user('+i+'); return false;" 
     }
     $('#vk_auth').html(onlineStr);
   });
