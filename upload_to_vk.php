@@ -8,6 +8,9 @@ if (
 {
 
 	$post=array('photo'=>'@'.getcwd().$_POST['photo']);
+
+	var_dump($post);
+
 	$this->ch=curl_init();
 	curl_setopt($this->ch, CURLOPT_URL, $_POST['url']);
 	curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, 1);
