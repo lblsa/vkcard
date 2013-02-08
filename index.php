@@ -26,11 +26,7 @@
               <span>Выберите друга</span>
               <b class="caret"></b>
             </a>
-            <ul class="dropdown-menu" id="vk_auth" role="menu" aria-labelledby="dLabel">
-              <li><a>Петр Холявко</a></li>
-              <li><a>Василий Вертушинский</a></li>
-              <li><a>Виола Петровская</a></li>
-            </ul>
+            <ul class="dropdown-menu" id="vk_auth" role="menu" aria-labelledby="dLabel"></ul>
           </div>
         </ul>
           <div class="row-fluid">

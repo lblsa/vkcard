@@ -205,6 +205,7 @@ $(function(){
               if(r.response) {
                 var args = {
                     owner_id: user.uid,
+                    message: 'Отправлено через http://vk.com/app3392840_8253453',
                     attachments : r.response[0].id // <type><owner_id>_<media_id>
                 };
 
