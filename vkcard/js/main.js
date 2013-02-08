@@ -205,10 +205,10 @@ $(function(){
         if (r.response) {
             console.log(r.response.post_id);
         }
-      });
+      });*/
     } else {
       alert('вы не выбрали друга');
-    }*/
+    }
     return false;
   });
 
