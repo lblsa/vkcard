@@ -179,6 +179,20 @@ $(function(){
 
   $('#post_to_wall').click(function(){
     if (user){
+
+      VK.api('photos.getWallUploadServer', { uid:1334573}, function(r){
+        console.log(r);
+        if (0) {
+          $.ajax({
+            type:"POST",
+            url:"/upload_to_vk.php",
+            data:{url:r.server, photo: $('#result_image').attr('src')},
+          }).done(function(result){
+            console.log(result);
+          })
+        }
+      });
+
       var args = {
           owner_id: user.uid,
           message: 'test',
@@ -261,3 +275,24 @@ function my_alert(message){
     var alert = '<h4>Warning!</h4><p>'+message+'</p>';
     $('#upload_alert').append(alert).show();
 }
+
+
+/*
+1.
+VK.api('photos.getWallUploadServer', { uid:1334573}, function(r){
+      console.log(r);
+});
+response: Object
+  aid: -14
+  mid: 8253453
+  upload_url: "http://cs317619.vk.com/upload.php?act=do_add&mid=8253453&aid=-14&gid=0&hash=49aa6c84362fe582a8fef78ae9c00c87&rhash=6bf50c412084fa8f31877c7d989a427a&swfupload=1&api=1&wallphoto=1"
+
+2. Upload to upload_url  <input type="file" name="photo" />
+response: 
+  {"server": "1234", "photo": "1234", "hash": "12345abcde"}
+
+
+3.
+photos.saveWallPhoto  server, photo, hash, uid
+
+*/
