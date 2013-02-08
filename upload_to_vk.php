@@ -8,18 +8,16 @@ if (
 
 	$post=array('photo'=>'@'.getcwd().$_POST['photo']);
 
-var_dump($_POST);
-var_dump($post);
-die;
+//var_dump($_POST);var_dump($post);die;
 
-	$this->ch=curl_init();
-	curl_setopt($this->ch, CURLOPT_URL, $_POST['url']);
-	curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($this->ch, CURLOPT_TIMEOUT, 30);
-	curl_setopt($this->ch, CURLOPT_FOLLOWLOCATION, 0);
-	curl_setopt($this->ch, CURLOPT_POST, 1);
-	curl_setopt($this->ch, CURLOPT_POSTFIELDS, $post);
-	$body = curl_exec($this->ch);
+	$ch=curl_init();
+	curl_setopt($ch, CURLOPT_URL, $_POST['url']);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
+	curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+	$body = curl_exec($ch);
 	echo $body; // << on Windows empty result
 	die;
 /*
