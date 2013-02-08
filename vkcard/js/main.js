@@ -181,7 +181,6 @@ $(function(){
     if (user){
 
       VK.api('photos.getWallUploadServer', { uid:1334573}, function(r){
-        r
         if (r) {
           $.ajax({
             type:"POST",
