@@ -193,7 +193,7 @@ $(function(){
           }).done(function(result){
             console.log(result);
             VK.api('photos.saveWallPhoto', result, function(r){
-              console.log(r);
+              console.log(r.response);
             })
           })
         }
