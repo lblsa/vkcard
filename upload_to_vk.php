@@ -18,10 +18,8 @@ if (
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 	$body = curl_exec($ch);
-
-$j = json_decode($body);
-var_dump($j);
-
+//$j = json_decode($body); var_dump($j);
+	header('Content-type: application/json');
 	echo $body; // << on Windows empty result
 	die;
 /*
