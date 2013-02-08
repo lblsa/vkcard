@@ -125,6 +125,17 @@ $(function(){
     }
   });
 
+  $('.clone').resizable({
+    alsoResize: "#prev_container",
+    aspectRatio: true,
+    stop:function( event, ui ){
+      var new_x1 = parseInt($('#x').val())+ui.size.width;
+      var new_y1 = parseInt($('#y').val())+ui.size.height;
+      var anim_to = [ parseInt($('#x').val()), parseInt($('#y').val()), new_x1, new_y1 ];
+      jcrop_api.setSelect(anim_to);//setSelect
+    }
+  });
+
   $("#inner_text" ).resizable();
 
   $('#inner_text').draggable({
@@ -224,6 +235,7 @@ $(function(){
   });
 
 //{apiId: 3392840}
+  
   VK.init(function(){
 
     VK.api('friends.get', {fields:"first_name,last_name,photo"}, function(data) {
@@ -242,6 +254,7 @@ $(function(){
         $('#vk_auth').html(onlineStr);
     });
   });
+  
 });
 
 function updateCoords(c) {};
