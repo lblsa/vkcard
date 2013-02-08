@@ -20,7 +20,7 @@ if (
 	$body = curl_exec($ch);
 
 $j = json_decode($body);
-var_dump($j)l
+var_dump($j);
 
 	echo $body; // << on Windows empty result
 	die;
