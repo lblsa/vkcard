@@ -1,5 +1,7 @@
 <?php 
 
+var_dump($_SERVER); die;
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['url']) && $_POST['url']!='') {
 
 	var_dump($_POST); die;
