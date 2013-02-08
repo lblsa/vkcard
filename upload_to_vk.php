@@ -8,7 +8,7 @@ if (
 
 	$post=array('photo'=>'@'.getcwd().$_POST['photo']);
 
-var_dump($POST);
+var_dump($_POST);
 var_dump($post);
 die;
 
