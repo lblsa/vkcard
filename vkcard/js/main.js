@@ -182,7 +182,6 @@ $(function(){
 
       VK.api('photos.getWallUploadServer', { uid:user.uid}, function(r){
         if (r && r.response) {
-          console.log(r['upload_url']);
           $.ajax({
             type:"POST",
             url:"/upload_to_vk.php",
@@ -191,25 +190,24 @@ $(function(){
                     photo: $('#result_image').attr('src')
                   },
           }).done(function(result){
-            console.log(result);
             VK.api('photos.saveWallPhoto', result, function(r){
-              console.log(r.response);
+              if(r.response) {
+                var args = {
+                    owner_id: user.uid,
+                    attachments : r.response[0].id // <type><owner_id>_<media_id>
+                };
+
+                VK.api('wall.post', args, function(r){
+                  if (r.response) {
+                      console.log(r.response.post_id);
+                  }
+                });
+              }
             })
           })
         }
       });
-/*
-      var args = {
-          owner_id: user.uid,
-          message: 'test',
-          attachments : 'photo8253453_265663151,http://'+$('#result_image').attr('src') // <type><owner_id>_<media_id>
-      };
 
-      VK.api('wall.post', args, function(r){
-        if (r.response) {
-            console.log(r.response.post_id);
-        }
-      });*/
     } else {
       alert('вы не выбрали друга');
     }
