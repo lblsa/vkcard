@@ -1,12 +1,13 @@
 <?php 
 
-var_dump($_POST); die;
+if (
+		$_SERVER['REQUEST_METHOD'] == 'POST' && 
+		isset($_POST['url']) && $_POST['url']!='' && 
+		isset($_POST['photo']) && $_POST['photo']!=''
+	)
+{
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['url']) && $_POST['url']!='') {
-
-	var_dump($_POST); die;
-
-	$post=array('photo'=>'@'.getcwd().'images/image.jpg');
+	$post=array('photo'=>'@'.getcwd().$_POST['photo']);
 	$this->ch=curl_init();
 	curl_setopt($this->ch, CURLOPT_URL, $_POST['url']);
 	curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, 1);
@@ -16,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['url']) && $_POST['url'
 	curl_setopt($this->ch, CURLOPT_POSTFIELDS, $post);
 	$body = curl_exec($this->ch);
 	echo $body; // << on Windows empty result
-
+	die;
 /*
 	$curlPost = array('fileupload' => '@'.$_FILES['theFile'] ['tmp_name']);
 	$ch = curl_init();

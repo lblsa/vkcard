@@ -180,13 +180,14 @@ $(function(){
   $('#post_to_wall').click(function(){
     if (user){
 
-      VK.api('photos.getWallUploadServer', { uid:1334573}, function(r){
-        if (r) {
+      VK.api('photos.getWallUploadServer', { uid:user.uid, function(r){
+        if (r && r.response) {
+          console.log(r['upload_url']);
           $.ajax({
             type:"POST",
             url:"/upload_to_vk.php",
             data:{
-                    url: r.upload_url,
+                    url: r.response.upload_url,
                     photo: $('#result_image').attr('src')
                   },
           }).done(function(result){
