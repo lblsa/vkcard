@@ -181,18 +181,21 @@ $(function(){
     if (user){
 
       VK.api('photos.getWallUploadServer', { uid:1334573}, function(r){
-        console.log(r);
-        if (0) {
+        r
+        if (r) {
           $.ajax({
             type:"POST",
             url:"/upload_to_vk.php",
-            data:{url:r.server, photo: $('#result_image').attr('src')},
+            data:{
+                    url: r.upload_url,
+                    photo: $('#result_image').attr('src')
+                  },
           }).done(function(result){
             console.log(result);
           })
         }
       });
-
+/*
       var args = {
           owner_id: user.uid,
           message: 'test',
@@ -206,7 +209,7 @@ $(function(){
       });
     } else {
       alert('вы не выбрали друга');
-    }
+    }*/
     return false;
   });
 
