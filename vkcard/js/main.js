@@ -213,11 +213,14 @@ $(function(){
                   if (r.response) {
                       console.log(r.response.post_id);
                   }
+        console.log('wall.post response: '+r);
                 });
               }
+        console.log('saveWallPhoto response: '+r);
             })
           })
         }
+        console.log('getWallUploadServer response: '+r);
       });
 
     } else {
