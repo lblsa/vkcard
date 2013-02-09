@@ -189,6 +189,8 @@ $(function(){
   });
 
   $('#post_to_wall').click(function(){
+
+        console.log('click #post_to_wall');
     if (user){
 
       VK.api('photos.getWallUploadServer', { uid:user.uid}, function(r){
