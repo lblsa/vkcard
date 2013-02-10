@@ -44,7 +44,7 @@
               </div>
               <div class="clone"></div>
               <label class="form-inline">Шрифт:
-                <select name="fontsize" class="fontsize">
+                <select name="fontsize" class="fontsize" id="fs">
                   <option value="8">8px</option>
                   <option value="9">9px</option>
                   <option value="10">10px</option>

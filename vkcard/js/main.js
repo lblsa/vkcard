@@ -171,6 +171,7 @@ $(function(){
         y:$('#y').val(),
         h:$('#h').val(),
         w:$('#w').val(),
+        fs:$('#fs').val(),
         vin:$('.vin').val(),
         img:$('#img').val(),
         text:$('#text').val()

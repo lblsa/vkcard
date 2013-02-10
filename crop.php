@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
   $draw = new ImagickDraw();
   $draw->setFont('tnr.ttf');
-  $draw->setFontSize((int)$_POST['fontsize']);
+  $draw->setFontSize((int)$_POST['fs']);
 
   $image = new Imagick();
   $image->newImage(315, 420, new ImagickPixel('white'));
