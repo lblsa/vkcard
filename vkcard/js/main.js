@@ -243,7 +243,7 @@ $(function(){
                         case 10005:
                           alert('Слишком часто\r\n('+r.error.error_msg+')');
                         case 10007:
-                          alert('Вы отклонили размещение\r\n('+r.error.error_msg+')');\
+                          alert('Вы отклонили размещение\r\n('+r.error.error_msg+')');
                       }
                     }
                     console.log('wall.post response: ',r);
