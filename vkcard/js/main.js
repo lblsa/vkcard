@@ -172,7 +172,7 @@ $(function(){
         h:$('#h').val(),
         w:$('#w').val(),
         fs:$('#fs').val(),
-        vin:$('.vin').val(),
+        vin:$('.vin:checked').val(),
         img:$('#img').val(),
         text:$('#text').val()
       }
@@ -219,14 +219,14 @@ $(function(){
                     if (r.response) {
                         console.log(r.response.post_id);
                     }
-                    console.log('wall.post response: '+r);
+                    console.log('wall.post response: ',r);
                   });
                 }
-                console.log('saveWallPhoto response: '+r);
+                console.log('saveWallPhoto response: ',r);
               })
             })
           }
-          console.log('getWallUploadServer response: '+r);
+          console.log('getWallUploadServer response: ',r);
         });
       }
 

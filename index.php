@@ -19,6 +19,7 @@
   <![endif]-->
 </head>
 <body id="body">
+<a href="/">Home</a>
 <form action="/crop.php" method="post" onsubmit="return checkCoords();">
   <table class="main">
     <tr>
