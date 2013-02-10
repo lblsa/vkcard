@@ -287,8 +287,6 @@ $(function(){
     user = users[parseInt($(this).attr('data-i'))];
     $('#dLabel span').html(user.first_name + ' ' + user.last_name+'<img src="'+user.photo+'" />');
     $('#dLabel').attr('href','http://vk.com/id'+user.uid);
-    $('#user_photo').attr('src',user.photo);
-    $('#user_name').html(user.first_name + ' ' + user.last_name);
     $('.dropdown').removeClass('open');
     return false;
   });

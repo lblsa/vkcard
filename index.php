@@ -127,18 +127,9 @@
   </table>
   <div class="row" id="result">
     <div class="span6">
-      <div class="media">
-        <a class="pull-left" href="#">
-          <img class="media-object" src="" id="user_photo" />
-        </a>
-        <div class="media-body">
-          <h4 class="media-heading" id="user_name"></h4>
-        </div>
-      </div>
       <img src="" border="0" id="result_image" />
       <a href="#" class="btn" id="post_to_wall">Отправить на стену другу</a><br><br>
       <a href="#" class="btn hide" id="link_to_wall" target="_blank"></a>
-
     </div>
   </div>
 </form>
