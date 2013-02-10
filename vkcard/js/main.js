@@ -161,34 +161,40 @@ $(function(){
   });
 
   $('#crop').click(function(){
-    if (user) {
-      var data = {
-        px:$('#px').val(),
-        tx:$('#tx').val(),
-        py:$('#py').val(),
-        ty:$('#ty').val(),
-        x:$('#x').val(),
-        y:$('#y').val(),
-        h:$('#h').val(),
-        w:$('#w').val(),
-        fs:$('#fs').val(),
-        vin:$('.vin:checked').val(),
-        img:$('#img').val(),
-        text:$('#text').val()
-      }
 
-      $.ajax({
-        type: "POST",
-        url: "/crop.php",
-        data:data,
-        dataType: "html"
-      }).done(function( result ) {
-        $('.main').fadeOut();
-        $('#result_image').attr('src','/'+result);
-        $('#result').fadeIn();
-      });
+
+    if ($('#cropbox').attr('src')!='') {
+      if (user) {
+        var data = {
+          px:$('#px').val(),
+          tx:$('#tx').val(),
+          py:$('#py').val(),
+          ty:$('#ty').val(),
+          x:$('#x').val(),
+          y:$('#y').val(),
+          h:$('#h').val(),
+          w:$('#w').val(),
+          fs:$('#fs').val(),
+          vin:$('.vin:checked').val(),
+          img:$('#img').val(),
+          text:$('#text').val()
+        }
+
+        $.ajax({
+          type: "POST",
+          url: "/crop.php",
+          data:data,
+          dataType: "html"
+        }).done(function( result ) {
+          $('.main').fadeOut();
+          $('#result_image').attr('src','/'+result);
+          $('#result').fadeIn();
+        });
+      } else {
+       alert('Необходимо выбрать друга');
+      }
     } else {
-     alert('Необходимо выбрать друга');
+     alert('Необходимо загрузить фото');
     }
     return false;
   });

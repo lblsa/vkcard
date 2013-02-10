@@ -136,7 +136,7 @@
         </div>
       </div>
       <img src="" border="0" id="result_image" />
-      <a href="#" class="btn" id="post_to_wall">Отправить на стену другу</a>
+      <a href="#" class="btn" id="post_to_wall">Отправить на стену другу</a><br><br>
       <a href="#" class="btn hide" id="link_to_wall" target="_blank"></a>
 
     </div>
