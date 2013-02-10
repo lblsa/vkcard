@@ -24,64 +24,63 @@
   <table class="main">
     <tr>
       <td class="left_bar">
-          <div class="dropdown">
-            <a class="dropdown-toggle btn-link btn-block" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">
-              <span>Выберите друга</span>
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu" id="vk_auth" role="menu" aria-labelledby="dLabel"></ul>
-          </div>
-        </ul>
-          <div class="row-fluid">
-            <div class="" style="position:relative;">
-              <div class="card">
-                <div style="width:0px;height:0px;overflow:hidden;" id="prev_container">
-                  <img src="" id="preview" alt="Preview" class="jcrop-preview" />
-                </div>
+        <div class="dropdown">
+          <a class="dropdown-toggle btn-link btn-block" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">
+            <span>Выберите друга</span>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu" id="vk_auth" role="menu" aria-labelledby="dLabel"></ul>
+        </div>
+        <div class="row-fluid">
+          <div class="" style="position:relative;">
+            <div class="card">
+              <div style="width:0px;height:0px;overflow:hidden;" id="prev_container">
+                <img src="" id="preview" alt="Preview" class="jcrop-preview" />
               </div>
-              <div class="vin_cont">
-                  <img width="315" src="/vignette/14_1.png">
-                  <div id="inner_text"><p></p></div>
-              </div>
-              <div class="clone"></div>
-              <label class="form-inline">Шрифт:
-                <select name="fontsize" class="fontsize" id="fs">
-                  <option value="8">8px</option>
-                  <option value="9">9px</option>
-                  <option value="10">10px</option>
-                  <option value="11">11px</option>
-                  <option value="12">12px</option>
-                  <option value="13">13px</option>
-                  <option selected value="14">14px</option>
-                  <option value="15">15px</option>
-                  <option value="16">16px</option>
-                  <option value="17">17px</option>
-                  <option value="18">18px</option>
-                  <option value="19">19px</option>
-                  <option value="20">20px</option>
-                  <option value="21">21px</option>
-                  <option value="22">22px</option>
-                  <option value="23">23px</option>
-                  <option value="24">24px</option>
-                  <option value="25">25px</option>
-                  <option value="26">26px</option>
-                  <option value="27">27px</option>
-                  <option value="28">28px</option>
-                </select>
-              </label>
-              <textarea id="text" placeholder="Ваш текст" name="text"></textarea>
             </div>
+            <div class="vin_cont">
+                <img width="315" src="/vignette/14_1.png">
+                <div id="inner_text"><p></p></div>
+            </div>
+            <div class="clone"></div>
+            <label class="form-inline">Шрифт:
+              <select name="fontsize" class="fontsize" id="fs">
+                <option value="8">8px</option>
+                <option value="9">9px</option>
+                <option value="10">10px</option>
+                <option value="11">11px</option>
+                <option value="12">12px</option>
+                <option value="13">13px</option>
+                <option selected value="14">14px</option>
+                <option value="15">15px</option>
+                <option value="16">16px</option>
+                <option value="17">17px</option>
+                <option value="18">18px</option>
+                <option value="19">19px</option>
+                <option value="20">20px</option>
+                <option value="21">21px</option>
+                <option value="22">22px</option>
+                <option value="23">23px</option>
+                <option value="24">24px</option>
+                <option value="25">25px</option>
+                <option value="26">26px</option>
+                <option value="27">27px</option>
+                <option value="28">28px</option>
+              </select>
+            </label>
+            <textarea id="text" placeholder="Ваш текст" name="text"></textarea>
           </div>
-          <input type="hidden" id="px" name="px" value="1" />
-          <input type="hidden" id="py" name="py" value="1" />
-          <input type="hidden" id="tx" name="tx" value="36" />
-          <input type="hidden" id="ty" name="ty" value="293" />
-          <input type="hidden" id="x" name="x" />
-          <input type="hidden" id="y" name="y" />
-          <input type="hidden" id="w" name="w" />
-          <input type="hidden" id="h" name="h" />
-          <input type="hidden" id="img" name="img" />
-          <input type="submit" class="btn btn-block" id="crop" value="Go!" />
+        </div>
+        <input type="hidden" id="px" name="px" value="1" />
+        <input type="hidden" id="py" name="py" value="1" />
+        <input type="hidden" id="tx" name="tx" value="36" />
+        <input type="hidden" id="ty" name="ty" value="293" />
+        <input type="hidden" id="x" name="x" />
+        <input type="hidden" id="y" name="y" />
+        <input type="hidden" id="w" name="w" />
+        <input type="hidden" id="h" name="h" />
+        <input type="hidden" id="img" name="img" />
+        <input type="submit" class="btn btn-block" id="crop" value="Go!" />
       </td>
       <td class="right_bar">
         <p> <img src="" alt="" id="cropbox" /> </p>
@@ -138,6 +137,8 @@
       </div>
       <img src="" border="0" id="result_image" />
       <a href="#" class="btn" id="post_to_wall">Отправить на стену другу</a>
+      <a href="#" class="btn hide" id="link_to_wall"></a>
+
     </div>
   </div>
 </form>

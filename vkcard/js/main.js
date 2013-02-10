@@ -217,7 +217,34 @@ $(function(){
 
                   VK.api('wall.post', args, function(r){
                     if (r.response) {
-                        console.log(r.response.post_id);
+                        $('#link_to_wall').attr('href','http://vk.com/wall'+user.uid+'_'+r.response.post_id)
+                                          .html('Посмотреть Открытку')
+                                          .fadeIn();         
+                    } else if (r.error) {
+                      switch (r.error.error_code) {
+                        case 1:
+                          alert('Произошла неизвестная ошибка\r\n('+r.error.error_msg+')');
+                        case 2:
+                          alert('Приложение отключено. Включите ваше приложение или используйте режим тестирования\r\n('+r.error.error_msg+')');
+                        case 4:
+                          alert('Неправильная подпись\r\n('+r.error.error_msg+')');
+                        case 5:
+                          alert('Ошибка авторизации\r\n('+r.error.error_msg+')');
+                        case 6:
+                          alert('Произошла неизвестная ошибка\r\n('+r.error.error_msg+')');
+                        case 7:
+                          alert('Разрешение на выполнение этого действия будет отказано пользователем\r\n('+r.error.error_msg+')');
+                        case 14:
+                          alert('Нужна капча\r\n('+r.error.error_msg+')');
+                        case 100:
+                          alert('Один из обязательных параметров отсутствовал или некорректен\r\n('+r.error.error_msg+')');
+                        case 214:
+                          alert('Нет доступа к публикации\r\n('+r.error.error_msg+')');
+                        case 10005:
+                          alert('Слишком часто\r\n('+r.error.error_msg+')');
+                        case 10007:
+                          alert('Вы отклонили размещение\r\n('+r.error.error_msg+')');\
+                      }
                     }
                     console.log('wall.post response: ',r);
                   });
