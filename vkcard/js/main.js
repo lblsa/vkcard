@@ -245,6 +245,7 @@ $(function(){
                         case 10007:
                           alert('Вы отклонили размещение\r\n('+r.error.error_msg+')');
                       }
+                      return false;
                     }
                     console.log('wall.post response: ',r);
                   });
@@ -266,6 +267,7 @@ $(function(){
   $('#body').on('click','#vk_auth span',function(){
     user = users[parseInt($(this).attr('data-i'))];
     $('#dLabel span').html(user.first_name + ' ' + user.last_name+'<img src="'+user.photo+'" />');
+    $('#dLabel').attr('href','http://vk.com/id'+user.uid);
     $('#user_photo').attr('src',user.photo);
     $('#user_name').html(user.first_name + ' ' + user.last_name);
     $('.dropdown').removeClass('open');

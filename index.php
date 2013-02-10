@@ -25,7 +25,7 @@
     <tr>
       <td class="left_bar">
         <div class="dropdown">
-          <a class="dropdown-toggle btn-link btn-block" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">
+          <a class="dropdown-toggle btn-link btn-block" id="dLabel" target="_blank" role="button" data-toggle="dropdown" href="#">
             <span>Выберите друга</span>
             <b class="caret"></b>
           </a>
@@ -137,7 +137,7 @@
       </div>
       <img src="" border="0" id="result_image" />
       <a href="#" class="btn" id="post_to_wall">Отправить на стену другу</a>
-      <a href="#" class="btn hide" id="link_to_wall"></a>
+      <a href="#" class="btn hide" id="link_to_wall" target="_blank"></a>
 
     </div>
   </div>
