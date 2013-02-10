@@ -230,28 +230,41 @@ $(function(){
                       switch (r.error.error_code) {
                         case 1:
                           alert('Произошла неизвестная ошибка\r\n('+r.error.error_msg+')');
+                          break;
                         case 2:
                           alert('Приложение отключено. Включите ваше приложение или используйте режим тестирования\r\n('+r.error.error_msg+')');
+                          break;
                         case 4:
                           alert('Неправильная подпись\r\n('+r.error.error_msg+')');
+                          break;
                         case 5:
                           alert('Ошибка авторизации\r\n('+r.error.error_msg+')');
+                          break;
                         case 6:
                           alert('Произошла неизвестная ошибка\r\n('+r.error.error_msg+')');
+                          break;
                         case 7:
                           alert('Разрешение на выполнение этого действия будет отказано пользователем\r\n('+r.error.error_msg+')');
+                          break;
                         case 14:
                           alert('Нужна капча\r\n('+r.error.error_msg+')');
+                          break;
                         case 100:
                           alert('Один из обязательных параметров отсутствовал или некорректен\r\n('+r.error.error_msg+')');
+                          break;
                         case 214:
                           alert('Нет доступа к публикации\r\n('+r.error.error_msg+')');
+                          break;
                         case 10005:
                           alert('Слишком часто\r\n('+r.error.error_msg+')');
+                          break;
                         case 10007:
                           alert('Вы отклонили размещение\r\n('+r.error.error_msg+')');
+                          break;
+                        default:
+                          alert('Произошла неизвестная ошибка\r\n('+r.error.error_msg+')');
+                          break;
                       }
-                      return false;
                     }
                     console.log('wall.post response: ',r);
                   });

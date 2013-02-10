@@ -19,18 +19,18 @@
   <![endif]-->
 </head>
 <body id="body">
-<a href="/">Home</a>
+<a href="/">Home</a><br>
+<div class="dropdown">
+  <a class="dropdown-toggle btn-link btn-block" id="dLabel" target="_blank" role="button" data-toggle="dropdown" href="#">
+    <span>Выберите друга</span>
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu" id="vk_auth" role="menu" aria-labelledby="dLabel"></ul>
+</div>
 <form action="/crop.php" method="post" onsubmit="return checkCoords();">
   <table class="main">
     <tr>
       <td class="left_bar">
-        <div class="dropdown">
-          <a class="dropdown-toggle btn-link btn-block" id="dLabel" target="_blank" role="button" data-toggle="dropdown" href="#">
-            <span>Выберите друга</span>
-            <b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu" id="vk_auth" role="menu" aria-labelledby="dLabel"></ul>
-        </div>
         <div class="row-fluid">
           <div class="" style="position:relative;">
             <div class="card">
