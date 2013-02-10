@@ -7,7 +7,9 @@
   <meta name="description" content="">
   <meta name="author" content="marchukilya@gmail.com">
   <!-- Le styles -->
+  <?php if($_SERVER['HTTP_HOST']!='vkcard.il'){ ?>
   <script src="http://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
+  <?php } ?>
   <link href="/vkcard/css/bootstrap.css" rel="stylesheet">
   <link href="/vkcard/css/bootstrap-responsive.css" rel="stylesheet">
   <link href="/vkcard/css/jquery.Jcrop.css" rel="stylesheet" />
@@ -41,7 +43,32 @@
                   <div id="inner_text"><p></p></div>
               </div>
               <div class="clone"></div>
-              <textarea id="text" name="text" style="width: 302px; margin: 10px 0px 10px; height: 72px;"></textarea>
+              <label class="form-inline">Шрифт:
+                <select name="fontsize" class="fontsize">
+                  <option value="8">8px</option>
+                  <option value="9">9px</option>
+                  <option value="10">10px</option>
+                  <option value="11">11px</option>
+                  <option value="12">12px</option>
+                  <option value="13">13px</option>
+                  <option selected value="14">14px</option>
+                  <option value="15">15px</option>
+                  <option value="16">16px</option>
+                  <option value="17">17px</option>
+                  <option value="18">18px</option>
+                  <option value="19">19px</option>
+                  <option value="20">20px</option>
+                  <option value="21">21px</option>
+                  <option value="22">22px</option>
+                  <option value="23">23px</option>
+                  <option value="24">24px</option>
+                  <option value="25">25px</option>
+                  <option value="26">26px</option>
+                  <option value="27">27px</option>
+                  <option value="28">28px</option>
+                </select>
+              </label>
+              <textarea id="text" placeholder="Ваш текст" name="text"></textarea>
             </div>
           </div>
           <input type="hidden" id="px" name="px" value="1" />

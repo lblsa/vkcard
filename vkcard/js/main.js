@@ -103,6 +103,10 @@ $(function(){
 
   var jcrop_api;
 
+  $('.fontsize').change(function(){
+    $('#text, #inner_text p').css('font-size',$(this).val()+'px');
+  })
+
   $('#cropbox').Jcrop({
     onChange: updatePreview,
     onSelect: updatePreview,
@@ -190,35 +194,36 @@ $(function(){
 
   $('#post_to_wall').click(function(){
     if (user){
+      if (VK){
+        VK.api('photos.getWallUploadServer', { uid:user.uid}, function(r){
+          if (r && r.response) {
+            $.ajax({
+              type:"POST",
+              url:"/upload_to_vk.php",
+              data:{
+                      url: r.response.upload_url,
+                      photo: $('#result_image').attr('src')
+                    },
+            }).done(function(result){
+              VK.api('photos.saveWallPhoto', result, function(r){
+                if(r.response) {
+                  var args = {
+                      owner_id: user.uid,
+                      message: 'Отправлено через http://vk.com/app3392840_8253453',
+                      attachments : r.response[0].id // <type><owner_id>_<media_id>
+                  };
 
-      VK.api('photos.getWallUploadServer', { uid:user.uid}, function(r){
-        if (r && r.response) {
-          $.ajax({
-            type:"POST",
-            url:"/upload_to_vk.php",
-            data:{
-                    url: r.response.upload_url,
-                    photo: $('#result_image').attr('src')
-                  },
-          }).done(function(result){
-            VK.api('photos.saveWallPhoto', result, function(r){
-              if(r.response) {
-                var args = {
-                    owner_id: user.uid,
-                    message: 'Отправлено через http://vk.com/app3392840_8253453',
-                    attachments : r.response[0].id // <type><owner_id>_<media_id>
-                };
-
-                VK.api('wall.post', args, function(r){
-                  if (r.response) {
-                      console.log(r.response.post_id);
-                  }
-                });
-              }
+                  VK.api('wall.post', args, function(r){
+                    if (r.response) {
+                        console.log(r.response.post_id);
+                    }
+                  });
+                }
+              })
             })
-          })
-        }
-      });
+          }
+        });
+      }
 
     } else {
       alert('вы не выбрали друга');
@@ -236,26 +241,25 @@ $(function(){
   });
 
 //{apiId: 3392840}
-  
-  VK.init(function(){
+  if (typeof(VK) != 'undefined'){
+    VK.init(function(){
+      VK.api('friends.get', {fields:"first_name,last_name,photo"}, function(data) {
+          var frCount = data.response.length;
+          users = data.response;
+          var onlineStr = '';
 
-    VK.api('friends.get', {fields:"first_name,last_name,photo"}, function(data) {
-        var frCount = data.response.length;
-        users = data.response;
-        var onlineStr = '';
+          for (var i=0; i<frCount; i++) {
+            onlineStr += '<li>'+
+                          '<span class="btn btn-block" data-i="'+i+'" >'
+                            + users[i].first_name + ' ' + users[i].last_name + 
+                          '</span>'+
+                        '</li>';
+          }
 
-        for (var i=0; i<frCount; i++) {
-          onlineStr += '<li>'+
-                        '<span class="btn btn-block" data-i="'+i+'" >'
-                          + users[i].first_name + ' ' + users[i].last_name + 
-                        '</span>'+
-                      '</li>';
-        }
-
-        $('#vk_auth').html(onlineStr);
+          $('#vk_auth').html(onlineStr);
+      });
     });
-  });
-  
+  }
 });
 
 function updateCoords(c) {};
