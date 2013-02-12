@@ -83,23 +83,8 @@
         <input type="submit" class="btn btn-block" id="crop" value="Go!" />
       </td>
       <td class="right_bar">
-        <p> <img src="" alt="" id="cropbox" /> </p>
-        <p>
-          <span class="btn btn-link btn-block drop" id="dropzone">Перетащите файл сюда или выберите с диска</span>
-          <p><small>Загрузите ваше фото, размером менее 1Mb</small></p>
-          <div class="fix_block">
-              <div id="progress" class="progress progress-striped hide">
-                  <div class="bar" style="width: 0%;"></div>
-              </div>
-          </div>
-          <input id="fileupload" type="file" class="hidden" name="files[]" data-url="/upload.php" />
-          <span id="upload_inf"></span>
-          <div id="upload_alert"></div>
-        </p>
-
         <h3>Виньетки</h3>
-        <table class="table">
-          <tr>
+        <table class="table"><tr>
             <td>
               <img width="80" src="/vignette/14_1.png" alt="">
               <label for=""><input class="vin" type="radio" value="1" checked name="vin" /></label>
@@ -120,8 +105,21 @@
               <img width="80" src="/vignette/14_5.png" alt="">
               <label for=""><input class="vin" type="radio" value="5" name="vin" /></label>
             </td>
-          </tr>
-        </table>
+        </tr></table>
+
+        <p> <img src="" alt="" id="cropbox" /> </p>
+        <p>
+          <span class="btn btn-link btn-block drop" id="dropzone">Перетащите файл сюда или выберите с диска</span>
+          <p><small>Загрузите ваше фото, размером менее 1Mb</small></p>
+          <div class="fix_block">
+              <div id="progress" class="progress progress-striped hide">
+                  <div class="bar" style="width: 0%;"></div>
+              </div>
+          </div>
+          <input id="fileupload" type="file" class="hidden" name="files[]" data-url="/upload.php" />
+          <span id="upload_inf"></span>
+          <div id="upload_alert"></div>
+        </p>
       </td>
     </tr>
   </table>

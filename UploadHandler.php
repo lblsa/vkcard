@@ -69,13 +69,13 @@ class UploadHandler
             'accept_file_types' => '/.+$/i',
             // The php.ini settings upload_max_filesize and post_max_size
             // take precedence over the following max_file_size setting:
-            'max_file_size' => null,
+            'max_file_size' => 1000000,
             'min_file_size' => 1,
             // The maximum number of files for the upload directory:
             'max_number_of_files' => null,
             // Image resolution restrictions:
-            'max_width' => 1600,
-            'max_height' => 1600,
+            'max_width' => 2000,
+            'max_height' => 2000,
             'min_width' => 1,
             'min_height' => 1,
             // Set the following option to false to enable resumable uploads:
@@ -382,6 +382,7 @@ class UploadHandler
                 $file_size > $this->options['max_file_size'] ||
                 $file->size > $this->options['max_file_size'])
             ) {
+
             $file->error = $this->get_error_message('max_file_size');
             return false;
         }
