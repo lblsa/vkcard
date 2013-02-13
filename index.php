@@ -10,7 +10,7 @@
   <?php if($_SERVER['HTTP_HOST']!='vkcard.il'){ ?>
   <script src="http://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
   <?php } ?>
-  <link href="/vkcard/css/bootstrap.css" rel="stylesheet">
+  <link href="/vkcard/css/bootstrap.min.css" rel="stylesheet">
   <link href="/vkcard/css/bootstrap-responsive.css" rel="stylesheet">
   <link href="/vkcard/css/jquery.Jcrop.css" rel="stylesheet" />
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -120,6 +120,41 @@
           <span id="upload_inf"></span>
           <div id="upload_alert"></div>
         </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="custom_text">
+        <h5>Готовый текст на открытку</h5>
+        <div class="btn-group" data-toggle="buttons-radio">
+          <button type="button" class="btn btn-small">Очистить поле</button>
+          <button type="button" class="btn btn-small" data-fontsize="12" data-toggle="popover" data-original-title="Жена поздравляет мужа" data-fontsize="10" data-content="                              Ты помнишь?
+А помнишь, как мы первый раз поцеловались?
+А как часами болтали по телефону… 
+как я учила тебя кататься на коньках… 
+а ты меня играть в футбол… 
+К чему это я? ― С  нем влюбленных, дорогой!">Жена поздравляет мужа</button>
+          <button type="button" class="btn btn-small" data-toggle="popover" data-original-title="Универсальное (для женщин)" data-fontsize="11" data-content="                             Береги меня
+Я та, с кем ты становишься собой. 
+Я та, кого тебе не обмануть. 
+Я та, для кого ты лучший на всем белом свете. 
+Я та, для которой ты ― единственный.
+                                                                 Любовь">Универсальное</button>
+          <button type="button" class="btn btn-small" data-fontsize="12" data-toggle="popover" data-original-title="Для смелых девушек (как повод сделать первый шаг)" data-content="                              Я есть
+Если ты один в этот день ― не грусти. 
+Это не значит, что тебя никто не выбрал. 
+Это значит, что ты не подпускаешь к себе тех, 
+кто тебе не нужен.
+                                                        Единственная">Для смелых девушек</button>
+          <button type="button" class="btn btn-small" data-content="                   Люби меня по расчету
+В этот праздничный день я прошу тебя 
+об одном: не люби меня просто так.
+Я ведь не козел
+                                  Самый лучший человек" data-fontsize="13" data-toggle="popover" data-original-title="Провокационное (для мужчин)">Провокационное</button>
+          <button type="button" class="btn btn-small" data-content="                  Моей королеве
+Сегодня я у твоих ног, любимая. 
+Впрочем, как всегда.
+                                         Верный паж" data-fontsize="14" data-toggle="popover" data-original-title="Только для настоящих мужчин">Для настоящих мужчин</button>
+        </div>
       </td>
     </tr>
   </table>

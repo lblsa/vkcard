@@ -291,6 +291,32 @@ $(function(){
     return false;
   });
 
+  $('.custom_text button').click(function(){
+    if ($(this).attr('data-toggle') == 'popover'){
+      
+      var text = $(this).attr('data-content');
+      var fontsize = $(this).attr('data-fontsize');
+
+      $('#text').val(text).css('font-size',fontsize+'px');
+      $('#inner_text p').html(text).css('font-size',fontsize+'px');
+      
+      $(".fontsize").val(fontsize);
+    
+    } else {
+
+      $('#text').val('');
+      $('#inner_text p').html('');
+
+    }
+    return true;
+  });
+
+  $('.custom_text button').popover({
+    trigger:"hover",
+    placement:"top",
+
+  })
+
 //{apiId: 3392840}
   if (typeof(VK) != 'undefined'){
     VK.init(function(){
@@ -310,6 +336,8 @@ $(function(){
           $('#vk_auth').html(onlineStr);
       });
     });
+  } else {
+    console.log('VK undefined');
   }
 });
 

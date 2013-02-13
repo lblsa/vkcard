@@ -130,6 +130,7 @@ border: 1px solid rgba(221, 221, 221, 0.5);
 	font-size: 20px;
 }
 #inner_text p{
+	line-height: 1.5em;
 	display:block;
 	padding: 0;
 	margin: 0;
@@ -191,12 +192,21 @@ border: 1px solid rgba(221, 221, 221, 0.5);
 	margin-top: 10px;
 }
 #text {
+	line-height: 1.5em;
 	width: 302px;
 	margin: 0 0 10px 0;
-	height: 72px;
+	height: 110px;
 	font-size: 14px;
 	font-family: 'Times New Roman';
 }
 #inner_text p {
 	font-size: 14px;
+}
+.popover-content {
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
+}
+.custom_text {
+	padding-top: 0;
 }
