@@ -1,9 +1,13 @@
-var users, user;
+var users, user, jcrop_api;
 $(function(){
   $('#dropzone').click(function(){
       $('#fileupload').click();
   });
-  
+
+  $('.fontsize').change(function(){
+    $('#text, #inner_text p').css('font-size',$(this).val()+'px');
+  });
+
   var jqXHR;
   jqXHR = $('#fileupload').fileupload({
       dataType: 'json',
@@ -27,10 +31,6 @@ $(function(){
                 var new_w = this.width;
                 var new_h = this.height;
 
-                jcrop_api.destroy();
-                jcrop_api.disable();
-                jcrop_api.enable();
-
                 $('#cropbox, #preview').css({width: new_w, height: new_h});
 
                 $('#cropbox').Jcrop({
@@ -39,10 +39,6 @@ $(function(){
                   onSelect: updatePreview,
                   aspectRatio: 1,
                 },function(){
-                  // Use the API to get the real image size
-                  var bounds = this.getBounds();
-                  boundx = bounds[0];
-                  boundy = bounds[1];
                   // Store the API in the jcrop_api variable
                   jcrop_api = this;
                 });
@@ -101,12 +97,7 @@ $(function(){
       }
   });
 
-  var jcrop_api;
-
-  $('.fontsize').change(function(){
-    $('#text, #inner_text p').css('font-size',$(this).val()+'px');
-  })
-
+/*
   $('#cropbox').Jcrop({
     onChange: updatePreview,
     onSelect: updatePreview,
@@ -118,7 +109,7 @@ $(function(){
     boundy = bounds[1];
     // Store the API in the jcrop_api variable
     jcrop_api = this;
-  });
+  });*/
 
   $('#prev_container, .clone').draggable({
     containment: ".card",
@@ -293,7 +284,7 @@ $(function(){
 
   $('.custom_text button').click(function(){
     if ($(this).attr('data-toggle') == 'popover'){
-      
+
       var text = $(this).attr('data-content');
       var fontsize = $(this).attr('data-fontsize');
 
@@ -313,8 +304,7 @@ $(function(){
 
   $('.custom_text button').popover({
     trigger:"hover",
-    placement:"top",
-
+    placement:"top"
   })
 
 //{apiId: 3392840}
@@ -356,7 +346,6 @@ function updatePreview(c){
   $('#w').val(c.w);
   $('#h').val(c.h);
   $('#img').val( $('#cropbox').attr('src') );
-
 
   if (parseInt(c.w) > 0) {
     var rx = 250 / c.w;

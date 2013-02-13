@@ -83,7 +83,7 @@
         <input type="submit" class="btn btn-block" id="crop" value="Go!" />
       </td>
       <td class="right_bar">
-        <h3>Виньетки</h3>
+        <h4>Виньетки</h4>
         <table class="table"><tr>
             <td>
               <img width="80" src="/vignette/14_1.png" alt="">
@@ -107,7 +107,7 @@
             </td>
         </tr></table>
 
-        <p> <img src="" alt="" id="cropbox" /> </p>
+        <p><img src="" alt="" id="cropbox" /></p>
         <p>
           <span class="btn btn-link btn-block drop" id="dropzone">Перетащите файл сюда или выберите с диска</span>
           <p><small>Загрузите ваше фото, размером менее 1Mb</small></p>
@@ -126,7 +126,7 @@
       <td colspan="2" class="custom_text">
         <h5>Готовый текст на открытку</h5>
         <div class="btn-group" data-toggle="buttons-radio">
-          <button type="button" class="btn btn-small">Очистить поле</button>
+          <button type="button" class="btn btn-small">Очистить</button>
           <button type="button" class="btn btn-small" data-fontsize="12" data-toggle="popover" data-original-title="Жена поздравляет мужа" data-fontsize="10" data-content="                              Ты помнишь?
 А помнишь, как мы первый раз поцеловались?
 А как часами болтали по телефону… 

@@ -305,6 +305,7 @@
         $origimg.height($origimg[0].height);
       } else {
         // Obtain dimensions from temporary image in case the original is not loaded yet (e.g. IE 7.0). 
+        //console.log($origimg[0])
         var tempImage = new Image();
         tempImage.src = $origimg[0].src;
         $origimg.width(tempImage.width);

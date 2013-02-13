@@ -156,8 +156,6 @@ border: 1px solid rgba(221, 221, 221, 0.5);
 	padding: 0;
 	border:0;
 	width: 800px;
-	height: 800px;
-	overflow: hidden;
 	background-color: #ccc;
 }
 .main td {
@@ -207,6 +205,12 @@ border: 1px solid rgba(221, 221, 221, 0.5);
 	white-space: -moz-pre-wrap;
 	white-space: -o-pre-wrap;
 }
-.custom_text {
+.main .custom_text {
 	padding-top: 0;
+}
+.main .left_bar {
+	padding-bottom: 0;
+}
+.main .right_bar {
+	padding-bottom: 0;
 }
