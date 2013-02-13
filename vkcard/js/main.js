@@ -304,7 +304,7 @@ $(function(){
 
   $('.custom_text button').popover({
     trigger:"hover",
-    placement:"left"
+    placement:"top"
   })
 
 //{apiId: 3392840}

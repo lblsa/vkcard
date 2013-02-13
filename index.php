@@ -150,7 +150,7 @@
 об одном: не люби меня просто так.
 Я ведь не козел
                                   Самый лучший человек" data-fontsize="13" data-toggle="popover" data-original-title="Провокационное (для мужчин)">Провокационное</button>
-          <button type="button" class="btn btn-small" data-content="                  Моей королеве
+          <button type="button" class="btn btn-small" data-placement="left" data-content="                  Моей королеве
 Сегодня я у твоих ног, любимая. 
 Впрочем, как всегда.
                                          Верный паж" data-fontsize="14" data-toggle="popover" data-original-title="Только для настоящих мужчин">Для настоящих мужчин</button>
