@@ -205,7 +205,7 @@ $(function(){
                     },
             }).done(function(result){
               VK.api('photos.saveWallPhoto', result, function(r){
-                if(r.response) {
+                if(r && r.response) {
                   var args = {
                       owner_id: user.uid,
                       message: 'Отправлено через http://vk.com/app3392840_8253453',
@@ -213,7 +213,7 @@ $(function(){
                   };
 
                   VK.api('wall.post', args, function(r){
-                    if (r.response) {
+                    if (r && r.response) {
                         $('#link_to_wall').attr('href','http://vk.com/wall'+user.uid+'_'+r.response.post_id)
                                           .html('Посмотреть Открытку')
                                           .fadeIn();         
@@ -256,15 +256,21 @@ $(function(){
                           alert('Произошла неизвестная ошибка\r\n('+r.error.error_msg+')');
                           break;
                       }
+                    } else {
+                      alert('Произошла неизвестная ошибка');
                     }
-                    console.log('wall.post response: ',r);
+                    //console.log('wall.post response: ',r);
                   });
+                } else {
+                  alert('Произошла ошибка сохранения фото');
                 }
-                console.log('saveWallPhoto response: ',r);
+                //if (r) console.log('saveWallPhoto response: ',r);
               })
             })
+          } else {
+            alert('Произошла ошибка в запросе к VK API');
           }
-          console.log('getWallUploadServer response: ',r);
+          //console.log('getWallUploadServer response: ',r);
         });
       }
 
