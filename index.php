@@ -158,7 +158,7 @@
       </td>
     </tr>
   </table>
-  <div class="row hidden" id="result">
+  <div class="row" style="display:none;" id="result">
     <div class="span6">
       <img src="" border="0" id="result_image" />
       <a href="#" class="btn" id="post_to_wall">Отправить на стену другу</a><br><br>
