@@ -1,7 +1,7 @@
 <?php
 /* Чтение изображения */
 
-$im = new Imagick("files/medium/Masha%20i%20Marina_1360848581.jpg");
+$im = new Imagick("files/medium/x_f8c8d2db_1360524431.jpg");
 
 echo $im; die;
 
