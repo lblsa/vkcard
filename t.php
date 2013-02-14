@@ -1,9 +1,11 @@
 <?php
 /* Чтение изображения */
 
-$im = new Imagick("files/medium/x_f8c8d2db_1360524431.jpg");
+$im = new Imagick("files/medium/Masha i Marina_1360848581.jpg");
 
-echo $im; die;
+header("Content-Type: image/jpg");
+echo $im;
+die;
 
 /* Миниатюра изображения */
 $im->thumbnailImage(200, null);
