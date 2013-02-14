@@ -426,7 +426,8 @@ class UploadHandler
     }
 
     protected function upcount_name($name) {
-        if (preg_match('/^(.*?)\.(gif|jpe?g|png)/', $name, $matches)) {        
+        if (preg_match('/^(.*?)\.(gif|jpe?g|png)/', $name, $matches)) {
+            $matches[1] = str_replace(' ', '_', $matches[1]);
             return $matches[1].'_'.time().'.'.$matches[2];
         } else {
            die('error line 423');
@@ -455,9 +456,8 @@ class UploadHandler
         // Also remove control characters and spaces (\x00..\x20) around the filename:
         $name = trim(basename(stripslashes($name)), ".\x00..\x20");
         // Use a timestamp for empty filenames:
-        if (!$name) {
-            $name = str_replace('.', '-', microtime(true));
-        }
+        $name = str_replace('.', '-', microtime(true));
+        
         // Add missing file extension for known image types:
         if (strpos($name, '.') === false &&
             preg_match('/^image\/(gif|jpe?g|png)/', $type, $matches)) {
