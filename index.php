@@ -19,7 +19,7 @@
   <![endif]-->
 </head>
 <body id="body">
-<a href="/">Home</a><br>
+<a href="/">Отправить еще одну открытку</a><br>
 <div class="dropdown">
   <a class="dropdown-toggle btn-link btn-block" id="dLabel" target="_blank" role="button" data-toggle="dropdown" href="#">
     <span>Выберите друга</span>
@@ -158,7 +158,7 @@
       </td>
     </tr>
   </table>
-  <div class="row" id="result">
+  <div class="row hidden" id="result">
     <div class="span6">
       <img src="" border="0" id="result_image" />
       <a href="#" class="btn" id="post_to_wall">Отправить на стену другу</a><br><br>
