@@ -25,6 +25,11 @@ $(function(){
               var file_url = file.url.replace("files","files/medium");
               $('#cropbox, #preview').attr({'src':file_url,'style':''});
 
+              if (typeof(jcrop_api)!='undefined'){
+                jcrop_api.release();
+                jcrop_api.destroy();
+              }
+
               var img = new Image();
               img.onload = function() {
                 var new_w = this.width;
@@ -50,9 +55,7 @@ $(function(){
 
           $('#dropzone').html('Перетащите файл сюда или выберите с диска');
 
-          if (!error){
-            $('#upload_alert, .upload_block').hide();
-          }
+          //if (!error){ $('#upload_alert, .upload_block').hide(); }
       },
       dropZone: $('.drop'),
 

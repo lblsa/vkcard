@@ -19,7 +19,7 @@
   <![endif]-->
 </head>
 <body id="body">
-<a href="/">Отправить еще одну открытку</a><br>
+<a href="/">Стартовая</a><br>
 
 <form action="/crop.php" method="post" onsubmit="return checkCoords();">
   <table class="main">
@@ -30,7 +30,7 @@
             <img class="media-object" src="" />
           </a>
           <div class="media-body">
-            <h4 class="media-heading">Media heading</h4>
+            <h4 class="media-heading"></h4>
           </div>
         </div>
         <div class="dropdown">
@@ -93,10 +93,13 @@
 
         <div class="row" style="display:none;" id="result">
           <div class="span6">
-            <a href="#" class="btn" id="back">Назад</a><br>
 
             <img src="" border="0" id="result_image" />
-            <a href="#" class="btn" id="post_to_wall">Отправить на стену другу</a><br><br>
+            <div class="btn-group">
+              <a href="#" class="btn" id="back">Назад</a>
+              <a href="#" class="btn" id="post_to_wall">Отправить на стену другу</a>
+            </div>
+            <br>
             <a href="#" class="btn hide" id="link_to_wall" target="_blank"></a>
           </div>
         </div>
