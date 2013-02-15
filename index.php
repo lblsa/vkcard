@@ -100,7 +100,7 @@
               <a href="#" class="btn" id="post_to_wall">Отправить на стену другу</a>
             </div>
             <br>
-            <a href="#" class="btn hide" id="link_to_wall" target="_blank"></a>
+            <a href="#" class="btn btn-link hide" id="link_to_wall" target="_blank"></a>
           </div>
         </div>
       </td>
