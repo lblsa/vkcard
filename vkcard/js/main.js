@@ -165,7 +165,7 @@ $(function(){
         }).done(function( result ) {
           $('#pre_result, .right_bar, .custom_text').fadeOut();
           $('#result_image').attr('src','/'+result);
-          $('#result').fadeIn();
+          $('#user, #result').fadeIn();
         });
       } else {
        alert('Необходимо выбрать друга');
@@ -177,9 +177,9 @@ $(function(){
   });
 
   $('#back').click(function(){
-    $('#result').fadeOut();
+    $('#user, #result').fadeOut();
     $('#pre_result, .right_bar, .custom_text').fadeIn();
-    $('#result_image').attr('src','');
+    $('#cropbox').attr('src','');
   });
 
   $('#post_to_wall').click(function(){
@@ -277,7 +277,7 @@ $(function(){
     $('#dLabel span').html(user.first_name + ' ' + user.last_name);
 
     $('#user .user_link').attr('href','http://vk.com/id'+user.uid);
-    $('#user .user_link img').attr('src',user.photo);
+    $('#user .media-object').attr('src',user.photo);
     $('#user .media-heading').html(user.first_name + ' ' + user.last_name);
 
     $('.dropdown').removeClass('open');
