@@ -163,7 +163,7 @@ $(function(){
           data:data,
           dataType: "html"
         }).done(function( result ) {
-          $('#pre_result, .right_bar, .custom_text').fadeOut();
+          $('#pre_result, .right_bar, .custom_text, .dropdown').fadeOut();
           $('#result_image').attr('src','/'+result);
           $('#user, #result').fadeIn();
         });
@@ -178,7 +178,7 @@ $(function(){
 
   $('#back').click(function(){
     $('#user, #result').fadeOut();
-    $('#pre_result, .right_bar, .custom_text').fadeIn();
+    $('#pre_result, .right_bar, .custom_text, .dropdown').fadeIn();
     $('#cropbox').attr('src','');
   });
 
