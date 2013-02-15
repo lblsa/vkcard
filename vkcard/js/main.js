@@ -163,7 +163,7 @@ $(function(){
           data:data,
           dataType: "html"
         }).done(function( result ) {
-          $('#pre_result').fadeOut();
+          $('#pre_result, .right_bar, .custom_text').fadeOut();
           $('#result_image').attr('src','/'+result);
           $('#result').fadeIn();
         });
@@ -174,6 +174,12 @@ $(function(){
      alert('Необходимо загрузить фото');
     }
     return false;
+  });
+
+  $('#back').click(function(){
+    $('#result').fadeOut();
+    $('#pre_result, .right_bar, .custom_text').fadeIn();
+    $('#result_image').attr('src','');
   });
 
   $('#post_to_wall').click(function(){

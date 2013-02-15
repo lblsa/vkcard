@@ -85,6 +85,8 @@
 
         <div class="row" style="display:none;" id="result">
           <div class="span6">
+            <a href="#" class="btn" id="back">Назад</a><br>
+
             <img src="" border="0" id="result_image" />
             <a href="#" class="btn" id="post_to_wall">Отправить на стену другу</a><br><br>
             <a href="#" class="btn hide" id="link_to_wall" target="_blank"></a>
