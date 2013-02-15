@@ -274,8 +274,12 @@ $(function(){
 
   $('#body').on('click','#vk_auth span',function(){
     user = users[parseInt($(this).attr('data-i'))];
-    $('#dLabel span').html(user.first_name + ' ' + user.last_name+'<img src="'+user.photo+'" />');
-    $('#dLabel').attr('href','http://vk.com/id'+user.uid);
+    $('#dLabel span').html(user.first_name + ' ' + user.last_name);
+
+    $('#user .user_link').attr('href','http://vk.com/id'+user.uid);
+    $('#user .user_link img').attr('src',user.photo);
+    $('#user .media-heading').html(user.first_name + ' ' + user.last_name);
+
     $('.dropdown').removeClass('open');
     return false;
   });

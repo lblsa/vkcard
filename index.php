@@ -25,6 +25,14 @@
   <table class="main">
     <tr>
       <td class="left_bar">
+        <div class="media hide" id="user">
+          <a class="pull-left" class="user_link" target="_blank" href="#">
+            <img class="media-object" src="" />
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+          </div>
+        </div>
         <div class="dropdown">
           <a class="dropdown-toggle btn-link btn-block" id="dLabel" target="_blank" role="button" data-toggle="dropdown" href="#">
             <span>Выберите друга</span>
@@ -80,7 +88,7 @@
           <input type="hidden" id="w" name="w" />
           <input type="hidden" id="h" name="h" />
           <input type="hidden" id="img" name="img" />
-          <input type="submit" class="btn btn-block" id="crop" value="Go!" />
+          <input type="submit" class="btn btn-block" id="crop" value="Сделать виньетку" />
         </div>
 
         <div class="row" style="display:none;" id="result">
