@@ -179,7 +179,7 @@ $(function(){
   $('#back').click(function(){
     $('#user, #result').fadeOut();
     $('#pre_result, .right_bar, .custom_text, .dropdown').fadeIn();
-    $('#cropbox').attr('src','');
+    //$('#cropbox').attr('src','');
   });
 
   $('#post_to_wall').click(function(){
