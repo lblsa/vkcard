@@ -16,7 +16,6 @@ $(function(){
           var error = 0;
 
           $.each(data.result.files, function (index, file) {
-            
 
             if (file.error) {
               error = 1
@@ -49,10 +48,11 @@ $(function(){
           });
           $('#progress').fadeOut();
 
-          if (!error)
-            $('#upload_alert').hide();
-          
           $('#dropzone').html('Перетащите файл сюда или выберите с диска');
+
+          if (!error){
+            $('#upload_alert, .upload_block').hide();
+          }
       },
       dropZone: $('.drop'),
 
@@ -96,20 +96,6 @@ $(function(){
           alert('File Upload has been canceled');
       }
   });
-
-/*
-  $('#cropbox').Jcrop({
-    onChange: updatePreview,
-    onSelect: updatePreview,
-    aspectRatio: 1,
-  },function(){
-    // Use the API to get the real image size
-    var bounds = this.getBounds();
-    boundx = bounds[0];
-    boundy = bounds[1];
-    // Store the API in the jcrop_api variable
-    jcrop_api = this;
-  });*/
 
   $('#prev_container, .clone').draggable({
     containment: ".card",
@@ -368,7 +354,7 @@ function updatePreview(c){
 
 function my_alert(message){
     $('#upload_alert h4, #upload_alert p').remove();
-    var alert = '<h4>Warning!</h4><p>'+message+'</p>';
+    var alert = '<h4>Предупреждение!</h4><p>'+message+'</p>';
     $('#upload_alert').append(alert).show();
 }
 

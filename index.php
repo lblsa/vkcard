@@ -108,9 +108,10 @@
         </tr></table>
 
         <p><img src="" alt="" id="cropbox" /></p>
-        <p>
+        <p class="upload_block">
           <span class="btn btn-link btn-block drop" id="dropzone">Перетащите файл сюда или выберите с диска</span>
-          <p><small>Загрузите ваше фото, размером менее 1Mb</small></p>
+          <small>Загрузите ваше фото, размером менее 1Mb</small>
+        </p>
           <div class="fix_block">
               <div id="progress" class="progress progress-striped hide">
                   <div class="bar" style="width: 0%;"></div>
