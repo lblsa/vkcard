@@ -163,7 +163,7 @@ $(function(){
           data:data,
           dataType: "html"
         }).done(function( result ) {
-          $('.main').fadeOut();
+          $('#pre_result').fadeOut();
           $('#result_image').attr('src','/'+result);
           $('#result').fadeIn();
         });

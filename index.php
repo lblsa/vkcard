@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Bootstrap, from Twitter</title>
+  <title>Фотовиньетки</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="marchukilya@gmail.com">
@@ -20,18 +20,19 @@
 </head>
 <body id="body">
 <a href="/">Отправить еще одну открытку</a><br>
-<div class="dropdown">
-  <a class="dropdown-toggle btn-link btn-block" id="dLabel" target="_blank" role="button" data-toggle="dropdown" href="#">
-    <span>Выберите друга</span>
-    <b class="caret"></b>
-  </a>
-  <ul class="dropdown-menu" id="vk_auth" role="menu" aria-labelledby="dLabel"></ul>
-</div>
+
 <form action="/crop.php" method="post" onsubmit="return checkCoords();">
   <table class="main">
     <tr>
       <td class="left_bar">
-        <div class="row-fluid">
+        <div class="dropdown">
+          <a class="dropdown-toggle btn-link btn-block" id="dLabel" target="_blank" role="button" data-toggle="dropdown" href="#">
+            <span>Выберите друга</span>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu" id="vk_auth" role="menu" aria-labelledby="dLabel"></ul>
+        </div>
+        <div class="row-fluid" id="pre_result">
           <div class="" style="position:relative;">
             <div class="card">
               <div style="width:0px;height:0px;overflow:hidden;" id="prev_container">
@@ -70,17 +71,25 @@
             </label>
             <textarea id="text" placeholder="Ваш текст" name="text"></textarea>
           </div>
+          <input type="hidden" id="px" name="px" value="1" />
+          <input type="hidden" id="py" name="py" value="1" />
+          <input type="hidden" id="tx" name="tx" value="36" />
+          <input type="hidden" id="ty" name="ty" value="293" />
+          <input type="hidden" id="x" name="x" />
+          <input type="hidden" id="y" name="y" />
+          <input type="hidden" id="w" name="w" />
+          <input type="hidden" id="h" name="h" />
+          <input type="hidden" id="img" name="img" />
+          <input type="submit" class="btn btn-block" id="crop" value="Go!" />
         </div>
-        <input type="hidden" id="px" name="px" value="1" />
-        <input type="hidden" id="py" name="py" value="1" />
-        <input type="hidden" id="tx" name="tx" value="36" />
-        <input type="hidden" id="ty" name="ty" value="293" />
-        <input type="hidden" id="x" name="x" />
-        <input type="hidden" id="y" name="y" />
-        <input type="hidden" id="w" name="w" />
-        <input type="hidden" id="h" name="h" />
-        <input type="hidden" id="img" name="img" />
-        <input type="submit" class="btn btn-block" id="crop" value="Go!" />
+
+        <div class="row" style="display:none;" id="result">
+          <div class="span6">
+            <img src="" border="0" id="result_image" />
+            <a href="#" class="btn" id="post_to_wall">Отправить на стену другу</a><br><br>
+            <a href="#" class="btn hide" id="link_to_wall" target="_blank"></a>
+          </div>
+        </div>
       </td>
       <td class="right_bar">
         <h4>Виньетки</h4>
@@ -159,13 +168,6 @@
       </td>
     </tr>
   </table>
-  <div class="row" style="display:none;" id="result">
-    <div class="span6">
-      <img src="" border="0" id="result_image" />
-      <a href="#" class="btn" id="post_to_wall">Отправить на стену другу</a><br><br>
-      <a href="#" class="btn hide" id="link_to_wall" target="_blank"></a>
-    </div>
-  </div>
 </form>
     <script type="text/javascript" src="/vkcard/js/jquery.min.js"></script>
     <script type="text/javascript" src="/vkcard/js/bootstrap.min.js"></script>
