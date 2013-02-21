@@ -381,6 +381,8 @@ function my_alert(message){
     $('#upload_alert').append(alert).show();
 }
 
+  $('#collapseThree').collapse("hide");
+  $('#collapseTwo').collapse("show");
 
 /*
 1.
