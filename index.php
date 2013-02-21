@@ -19,7 +19,7 @@
   <![endif]-->
 </head>
 <body id="body">
-<h1><a href="/">Стартовая - Фотовиньетки</a></h1>
+<h1 style="text-align: center;"><a href="/">Стартовая - Фотовиньетки</a></h1>
 <ul class="nav nav-tabs" id="myTab">
   <li><a href="#feb14">14 февраля</a></li>
   <li><a href="#feb23">23 февраля</a></li>
