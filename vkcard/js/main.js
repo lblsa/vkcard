@@ -180,7 +180,7 @@ $(function(){
           h:$('#h').val(),
           w:$('#w').val(),
           fs:$('#fs').val(),
-          vin:$('.vin:checked').val(),
+          vin:$('.vin input:checked').val(),
           img:$('#img').val(),
           text:$('#text').val()
         }
