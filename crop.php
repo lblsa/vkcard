@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
   // накладываем виньетку
   if ($_POST['vin'])
   {
-    $vin = new Imagick('vignette/14_'.$_POST['vin'].'.png');
+    $vin = new Imagick(substr($_POST['vin'],1));
     $image->compositeImage( $vin, Imagick::COMPOSITE_DEFAULT, 0, 0 );
   }
 
