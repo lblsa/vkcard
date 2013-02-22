@@ -223,8 +223,11 @@ border: 1px solid rgba(221, 221, 221, 0.5);
 #collapse4.in{
 	overflow: inherit;
 }
-#crop {
-	
-width: 315px;
-margin-top: 15px;
+#crop {	
+	width: 315px;
+	margin-top: 15px;
+}
+#myTab {
+	text-align: center;
+	font-weight: bold;
 }

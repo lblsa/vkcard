@@ -21,9 +21,9 @@
 <body id="body">
 <h1 style="text-align: center;"><a href="/">Стартовая - Фотовиньетки</a></h1>
 <ul class="nav nav-tabs" id="myTab">
-  <li><a href="#feb14">14 февраля</a></li>
-  <li><a href="#feb23">23 февраля</a></li>
-  <li class="hide"><a href="#mar8">8 марта</a></li>
+  <li class="span4"><a href="#feb14">14 февраля</a></li>
+  <li class="span4"><a href="#feb23">23 февраля</a></li>
+  <li class="hide span4"><a href="#mar8">8 марта</a></li>
 </ul>
 <div class="tab-content">
   <div class="tab-pane" id="feb14">
@@ -56,8 +56,6 @@
         </div>
 
         <div class="row-fluid" style="display:none;" id="result">
-          <div class="span6">
-
             <img src="" border="0" id="result_image" />
             <div class="btn-group">
               <a href="#" class="btn" id="back">Назад</a>
@@ -65,7 +63,6 @@
             </div>
             <br>
             <a href="#" class="btn btn-link hide" id="link_to_wall" target="_blank"></a>
-          </div>
         </div>
       </div>
       <div class="span7">
