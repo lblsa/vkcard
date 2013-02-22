@@ -29,7 +29,7 @@
   <div class="tab-pane" id="feb14">
     <h2>Открытки к 14 февраля</h2>
     <div class="row-fluid">
-      <div class="span6">
+      <div class="span5">
         <div class="row-fluid" id="pre_result">
           <div class="" style="position:relative;">
             <div class="card">
@@ -68,7 +68,7 @@
           </div>
         </div>
       </div>
-      <div class="span6">
+      <div class="span7">
         <div class="accordion" id="accordion2">
           <div class="accordion-group">
             <div class="accordion-heading">
