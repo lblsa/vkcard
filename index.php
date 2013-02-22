@@ -101,24 +101,34 @@
               <div class="accordion-inner">
                 <table class="table"><tr>
                     <td>
-                      <img width="80" class="vignette" src="/vignette/14_1.png" alt="">
-                      <label for=""><input class="vin" type="radio" value="1" checked name="vin" /></label>
+                      <label class="vin" for="vin1">
+                        <img width="80" class="vignette" src="/vignette/14_1.png" alt=""><br>
+                        <input type="radio" value="1" checked name="vin" id="vin1" />
+                      </label>
                     </td>
                     <td>
-                      <img width="80" class="vignette" src="/vignette/14_2.png" alt="">
-                      <label for=""><input class="vin" type="radio" value="2" name="vin" /></label>
+                      <label class="vin" for="vin2">
+                        <img width="80" class="vignette" src="/vignette/14_2.png" alt=""><br>
+                        <input type="radio" value="2" name="vin" id="vin2" />
+                      </label>
                     </td>
                     <td>
-                      <img width="80" class="vignette" src="/vignette/14_3.png" alt="">
-                      <label for=""><input class="vin" type="radio" value="3" name="vin" /></label>
+                      <label class="vin" for="vin3">
+                        <img width="80" class="vignette" src="/vignette/14_3.png" alt=""><br>
+                        <input type="radio" value="3" name="vin" id="vin3" />
+                      </label>
                     </td>
                     <td>
-                      <img width="80" class="vignette" src="/vignette/14_4.png" alt="">
-                      <label for=""><input class="vin" type="radio" value="4" name="vin" /></label>
+                      <label class="vin" for="vin4">
+                        <img width="80" class="vignette" src="/vignette/14_4.png" alt=""><br>
+                        <input type="radio" value="4" name="vin" id="vin4" />
+                      </label>
                     </td>
                     <td>
-                      <img width="80" class="vignette" src="/vignette/14_5.png" alt="">
-                      <label for=""><input class="vin" type="radio" value="5" name="vin" /></label>
+                      <label  class="vin" for="vin5">
+                        <img width="80" class="vignette" src="/vignette/14_5.png" alt=""><br>
+                        <input type="radio" value="5" name="vin" id="vin5" />
+                      </label>
                     </td>
                 </tr></table>
               </div>

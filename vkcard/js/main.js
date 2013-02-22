@@ -13,10 +13,16 @@ $(function(){
     if ( $(this).attr('href')=='#feb23' ) {
       $("#feb14 .span5").appendTo("#feb23 .main_spans");
       $("#feb14 .span7").appendTo("#feb23 .main_spans");
+      
+      $('.vin[for=vin1], .vin[for=vin2]').hide();
+
       $('.vignette').each(function(a,b){     $(b).attr('src','/vignette/23_'+(a+1)+'.png')    });
+
+
     } else {
       $("#feb23 .span5").appendTo("#feb14 .main_spans");
       $("#feb23 .span7").appendTo("#feb14 .main_spans");
+      $('.vin[for=vin1], .vin[for=vin2]').show();
       $('.vignette').each(function(a,b){     $(b).attr('src','/vignette/14_'+(a+1)+'.png')    });
     }
 
@@ -156,7 +162,7 @@ $(function(){
   });
 
   $('.vin').click(function(){
-    $('.vin_cont img').attr('src','/vignette/14_'+$(this).val()+'.png');
+    $('.vin_cont img').attr('src',$('img',this).attr('src'));
     $('.vin_cont').show();
     $('#text').show();
   });
