@@ -25,27 +25,11 @@
   <li><a href="#feb23">23 февраля</a></li>
   <li class="hide"><a href="#mar8">8 марта</a></li>
 </ul>
-<form action="/crop.php" method="post" onsubmit="return checkCoords();">
 <div class="tab-content">
   <div class="tab-pane" id="feb14">
     <h2>Открытки к 14 февраля</h2>
     <div class="row-fluid">
       <div class="span6">
-        <div class="media hide" id="user">
-          <a class="pull-left" class="user_link" target="_blank" href="#">
-            <img class="media-object" src="" />
-          </a>
-          <div class="media-body">
-            <h4 class="media-heading"></h4>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a class="dropdown-toggle btn-link btn-block" id="dLabel" target="_blank" role="button" data-toggle="dropdown" href="#">
-            <span>Выберите друга</span>
-            <b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu" id="vk_auth" role="menu" aria-labelledby="dLabel"></ul>
-        </div>
         <div class="row-fluid" id="pre_result">
           <div class="" style="position:relative;">
             <div class="card">
@@ -71,7 +55,7 @@
           <input type="submit" class="btn btn-block" id="crop" value="Сделать виньетку" />
         </div>
 
-        <div class="row" style="display:none;" id="result">
+        <div class="row-fluid" style="display:none;" id="result">
           <div class="span6">
 
             <img src="" border="0" id="result_image" />
@@ -177,8 +161,8 @@
                   </select>
                 </label>
                 <textarea id="text" placeholder="Ваш текст" name="text"></textarea>
-                <div class="row-fluid">
-                <button type="button" class="btn btn-small">Очистить</button>
+                <div class="row-fluid custom_text">
+                <button type="button" class="btn btn-small btn-inverse">Очистить</button>
                 <button type="button" class="btn btn-small" data-fontsize="12" data-toggle="popover" data-original-title="Жена поздравляет мужа" data-fontsize="10" data-content="                              Ты помнишь?
 А помнишь, как мы первый раз поцеловались?
 А как часами болтали по телефону… 
@@ -210,6 +194,44 @@
               </div>
             </div>
           </div>
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse4">
+                Выберите друга
+              </a>
+            </div>
+            <div id="collapse4" class="accordion-body collapse" style="height: 0px;">
+              <div class="accordion-inner">
+                <div class="media hide" id="user">
+                  <a class="pull-left" class="user_link" target="_blank" href="#">
+                    <img class="media-object" src="" />
+                  </a>
+                  <div class="media-body">
+                    <h4 class="media-heading"></h4>
+                  </div>
+                </div>
+                <div class="dropdown">
+                  <a class="dropdown-toggle btn-link btn-block" id="dLabel" target="_blank" role="button" data-toggle="dropdown" href="#">
+                    <span>Выберите друга</span>
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu" id="vk_auth" role="menu" aria-labelledby="dLabel"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse5">
+                Отправить
+              </a>
+            </div>
+            <div id="collapse5" class="accordion-body collapse" style="height: 0px;">
+              <div class="accordion-inner">
+                Отправить на стену
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -225,7 +247,7 @@
           <div class="accordion-group">
             <div class="accordion-heading">
               <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne23">
-                Collapsible Group Item #1
+                Загрузить фото
               </a>
             </div>
             <div id="collapseOne23" class="accordion-body collapse" style="height: 0px;">
@@ -237,7 +259,7 @@
           <div class="accordion-group">
             <div class="accordion-heading">
               <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo23">
-                Collapsible Group Item #2
+                Виньетки
               </a>
             </div>
             <div id="collapseTwo23" class="accordion-body collapse" style="height: 0px;">
@@ -249,7 +271,7 @@
           <div class="accordion-group">
             <div class="accordion-heading">
               <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree23">
-                Collapsible Group Item #3
+                Текст на открытку
               </a>
             </div>
             <div id="collapseThree23" class="accordion-body in collapse" style="height: auto;">
@@ -266,14 +288,13 @@
     <h2>Открытки к 8 марта</h2>
   </div>
 </div>
-</form>
-    <script type="text/javascript" src="/vkcard/js/widgets.js"></script>
     <script type="text/javascript" src="/vkcard/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/vkcard/js/jquery.Jcrop.js"></script>
+    <script type="text/javascript" src="/vkcard/js/widgets.js"></script>
     <script type="text/javascript" src="/vkcard/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/vkcard/js/jquery.ui.widget.js"></script>
     <script type="text/javascript" src="/vkcard/js/jquery.iframe-transport.js"></script>
     <script type="text/javascript" src="/vkcard/js/jquery.fileupload.js"></script>
-    <script type="text/javascript" src="/vkcard/js/jquery.Jcrop.js"></script>
     <script type="text/javascript" src="/vkcard/js/jquery-ui-1.10.0.custom.min.js"></script>
     <script type="text/javascript" src="/vkcard/js/underscore-min.js"></script>
     <script type="text/javascript" src="/vkcard/js/main.js"></script>

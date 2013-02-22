@@ -19,6 +19,7 @@ $(function(){
   });
 
   var jqXHR;
+
   jqXHR = $('#fileupload').fileupload({
       dataType: 'json',
       done: function (e, data) {
@@ -41,6 +42,7 @@ $(function(){
               }
 
               var img = new Image();
+
               img.onload = function() {
                 var new_w = this.width;
                 var new_h = this.height;
@@ -51,14 +53,14 @@ $(function(){
                   trueSize: [new_w,new_h],
                   onChange: updatePreview,
                   onSelect: updatePreview,
-                  aspectRatio: 1,
+                  aspectRatio: 0
                 },function(){
                   // Store the API in the jcrop_api variable
                   jcrop_api = this;
                 });
               }
-              img.src = file_url;
 
+              img.src = file_url;
             }
           });
           $('#progress').fadeOut();
@@ -151,9 +153,7 @@ $(function(){
   });
 
   $('#crop').click(function(){
-
-
-    if ($('#cropbox').attr('src')!='') {
+    if ($('#cropbox').attr('src')!=''){
       if (user) {
         var data = {
           px:$('#px').val(),
@@ -176,9 +176,11 @@ $(function(){
           data:data,
           dataType: "html"
         }).done(function( result ) {
-          $('#pre_result, .right_bar, .custom_text, .dropdown').fadeOut();
+          $('#pre_result').fadeOut();
           $('#result_image').attr('src','/'+result);
-          $('#user, #result').fadeIn();
+          $('#result').fadeIn();
+
+          // TODO show selected user
         });
       } else {
        alert('Необходимо выбрать друга');
@@ -196,7 +198,6 @@ $(function(){
   });
 
   $('#post_to_wall').click(function(){
-
     if (user){
       if (VK){
         VK.api('photos.getWallUploadServer', { uid:user.uid}, function(r){
@@ -360,7 +361,8 @@ function updatePreview(c){
   $('#y').val(c.y);
   $('#w').val(c.w);
   $('#h').val(c.h);
-  $('#img').val( $('#cropbox').attr('src') );
+  $('#img').val( $('#cropbox').attr('src') );  
+  $('#prev_container, .clone').css({ width: c.w + 'px', height:  c.h + 'px'});
 
   if (parseInt(c.w) > 0) {
     var rx = 250 / c.w;
@@ -370,9 +372,8 @@ function updatePreview(c){
       marginLeft: '-' + c.x + 'px',
       marginTop: '-' + c.y + 'px'
     });
-    
-    $('#prev_container, .clone').css({ width: c.w + 'px', height:  c.h + 'px'});
   }
+
 };
 
 function my_alert(message){
@@ -381,8 +382,8 @@ function my_alert(message){
     $('#upload_alert').append(alert).show();
 }
 
-  $('#collapseThree').collapse("hide");
-  $('#collapseTwo').collapse("show");
+$('#collapseThree').collapse("hide");
+$('#collapseTwo').collapse("show");
 
 /*
 1.
