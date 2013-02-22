@@ -7,6 +7,19 @@ $(function(){
 
   $('#myTab a').click(function (e) {
     e.preventDefault();
+    
+    console.log($(this).attr('href'));
+
+    if ( $(this).attr('href')=='#feb23' ) {
+      $("#feb14 .span5").appendTo("#feb23 .main_spans");
+      $("#feb14 .span7").appendTo("#feb23 .main_spans");
+      $('.vignette').each(function(a,b){     $(b).attr('src','/vignette/23_'+(a+1)+'.png')    });
+    } else {
+      $("#feb23 .span5").appendTo("#feb14 .main_spans");
+      $("#feb23 .span7").appendTo("#feb14 .main_spans");
+      $('.vignette').each(function(a,b){     $(b).attr('src','/vignette/14_'+(a+1)+'.png')    });
+    }
+
     $(this).tab('show');
   });
 

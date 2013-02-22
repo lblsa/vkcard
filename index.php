@@ -28,7 +28,7 @@
 <div class="tab-content">
   <div class="tab-pane" id="feb14">
     <h2>Открытки к 14 февраля</h2>
-    <div class="row-fluid">
+    <div class="row-fluid main_spans">
       <div class="span5">
         <div class="row-fluid" id="pre_result">
           <div class="" style="position:relative;">
@@ -101,23 +101,23 @@
               <div class="accordion-inner">
                 <table class="table"><tr>
                     <td>
-                      <img width="80" src="/vignette/14_1.png" alt="">
+                      <img width="80" class="vignette" src="/vignette/14_1.png" alt="">
                       <label for=""><input class="vin" type="radio" value="1" checked name="vin" /></label>
                     </td>
                     <td>
-                      <img width="80" src="/vignette/14_2.png" alt="">
+                      <img width="80" class="vignette" src="/vignette/14_2.png" alt="">
                       <label for=""><input class="vin" type="radio" value="2" name="vin" /></label>
                     </td>
                     <td>
-                      <img width="80" src="/vignette/14_3.png" alt="">
+                      <img width="80" class="vignette" src="/vignette/14_3.png" alt="">
                       <label for=""><input class="vin" type="radio" value="3" name="vin" /></label>
                     </td>
                     <td>
-                      <img width="80" src="/vignette/14_4.png" alt="">
+                      <img width="80" class="vignette" src="/vignette/14_4.png" alt="">
                       <label for=""><input class="vin" type="radio" value="4" name="vin" /></label>
                     </td>
                     <td>
-                      <img width="80" src="/vignette/14_5.png" alt="">
+                      <img width="80" class="vignette" src="/vignette/14_5.png" alt="">
                       <label for=""><input class="vin" type="radio" value="5" name="vin" /></label>
                     </td>
                 </tr></table>
@@ -235,12 +235,9 @@
   </div>
   <div class="tab-pane" id="feb23">
     <h2>Открытки к 23 февраля</h2>
-    <div class="row-fluid">
-      <div class="span6">
-        123
-      </div>
-      <div class="span6">
-        <div class="accordion" id="accordion3">
+    <div class="row-fluid main_spans">
+
+        <!-- <div class="accordion" id="accordion3">
           <div class="accordion-group">
             <div class="accordion-heading">
               <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne23">
@@ -277,8 +274,7 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </div>-->
     </div>
   </div>
   <div class="tab-pane" id="mar8">
