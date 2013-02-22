@@ -1,9 +1,12 @@
 var users, user, jcrop_api;
 $(function(){
 
+  $('.custom_text').html($('.customtext_14').html());
+
   $(function () {
     $('#myTab a:first').tab('show');
   });
+
 
   $('#myTab a').click(function (e) {
     e.preventDefault();
@@ -13,11 +16,15 @@ $(function(){
       $("#feb14 .span7").appendTo("#feb23 .main_spans");
       $('.vin[for=vin1], .vin[for=vin2]').hide();
       $('.vignette').each(function(a,b){     $(b).attr('src','/vignette/23_'+(a+1)+'.png')    });
+
+      $('.custom_text').html($('.customtext_23').html());
     } else {
       $("#feb23 .span5").appendTo("#feb14 .main_spans");
       $("#feb23 .span7").appendTo("#feb14 .main_spans");
       $('.vin[for=vin1], .vin[for=vin2]').show();
       $('.vignette').each(function(a,b){     $(b).attr('src','/vignette/14_'+(a+1)+'.png')    });
+
+      $('.custom_text').html($('.customtext_14').html());
     }
 
     $(this).tab('show');
@@ -313,7 +320,7 @@ $(function(){
     return false;
   });
 
-  $('.custom_text button').click(function(){
+  $('#body').on('click','.custom_text button', function(){
     if ($(this).attr('data-toggle') == 'popover'){
 
       var text = $(this).attr('data-content');
