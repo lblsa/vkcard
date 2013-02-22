@@ -61,6 +61,26 @@
 нужно всего лишь твердо стоять на ногах. 
 И мы от всей души желаем вам этого!
                                                                Женщины">Универсальное</button>
+
+<button type="button" class="btn btn-small" data-fontsize="13" data-toggle="popover" data-original-title="Универсальные (для женщин)" data-fontsize="12" data-content="                              Будь собой
+Принцем на белом коне ты можешь не быть. 
+Главное ― будь мужчиной!">Будь собой</button>
+
+<button type="button" class="btn btn-small" data-fontsize="12" data-toggle="popover" data-original-title="Универсальные (для женщин)" data-fontsize="12" data-content="                      Ты мне дорог и такой
+Брутальность ― это хорошо, это просто здорово, 
+круче не бывает! Но знаешь, когда ты белый и 
+пушистый, я тебя все равно люблю">Ты мне дорог и такой</button>
+
+<button type="button" class="btn btn-small" data-fontsize="14" data-toggle="popover" data-original-title="Дочь ― отцу" data-fontsize="11" data-content="                    Ты ― лучший
+В этот праздничный день я хочу сказать 
+тебе: ты лучший на свете мужчина, папуля!
+                                                 Доченька">Дочь ― отцу</button>
+
+<button type="button" class="btn btn-small" data-fontsize="12" data-toggle="popover" data-original-title="Женский коллектив ― своему руководителю-мужчине" data-fontsize="11" data-content="                     Есть, товарищ командир!
+Вы нам ― как отец родной.
+За Вами ― как за каменной стеной. 
+За Вас ― кого угодно в клочья!
+                                        Ваш женский батальон">Руководителю мужчине</button>
   </div>
 </div>
 <h1 style="text-align: center;"><a href="/">Стартовая - Фотовиньетки</a></h1>

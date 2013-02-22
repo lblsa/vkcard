@@ -16,14 +16,14 @@ $(function(){
       $("#feb14 .span7").appendTo("#feb23 .main_spans");
       $('.vin[for=vin1], .vin[for=vin2]').hide();
       $('.vignette').each(function(a,b){     $(b).attr('src','/vignette/23_'+(a+1)+'.png')    });
-
+      $('.vin:last').click();
       $('.custom_text').html($('.customtext_23').html());
     } else {
       $("#feb23 .span5").appendTo("#feb14 .main_spans");
       $("#feb23 .span7").appendTo("#feb14 .main_spans");
       $('.vin[for=vin1], .vin[for=vin2]').show();
       $('.vignette').each(function(a,b){     $(b).attr('src','/vignette/14_'+(a+1)+'.png')    });
-
+      $('.vin:first').click();
       $('.custom_text').html($('.customtext_14').html());
     }
 
