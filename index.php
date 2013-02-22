@@ -89,10 +89,11 @@
   <li class="span4"><a href="#feb23">23 февраля</a></li>
   <li class="hide span4"><a href="#mar8">8 марта</a></li>
 </ul>
+<div class="container">
 <div class="tab-content">
   <div class="tab-pane" id="feb14">
     <h2>Открытки к 14 февраля</h2>
-    <div class="row main_spans">
+    <div class="row-fluid main_spans">
       <div class="span5">
         <div class="row-fluid" id="pre_result">
           <div class="" style="position:relative;">
@@ -268,11 +269,12 @@
   </div>
   <div class="tab-pane" id="feb23">
     <h2>Открытки к 23 февраля</h2>
-    <div class="row main_spans"></div>
+    <div class="row-fluid main_spans"></div>
   </div>
   <div class="tab-pane" id="mar8">
     <h2>Открытки к 8 марта</h2>
   </div>
+</div>
 </div>
     <script type="text/javascript" src="/vkcard/js/jquery.min.js"></script>
     <script type="text/javascript" src="/vkcard/js/jquery.Jcrop.js"></script>

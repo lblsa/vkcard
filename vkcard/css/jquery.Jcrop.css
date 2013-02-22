@@ -85,11 +85,8 @@
 /* Fix for twitter bootstrap et al. */
 .jcrop-holder img,img.jcrop-preview{ max-width: none; }
 
-body {
-	padding: 10px;
-}
-.container {
-}
+body {padding: 0;}
+.container {}
 .vin_cont {
 width: 315px;
 height: 420px;
@@ -236,4 +233,7 @@ border: 1px solid rgba(221, 221, 221, 0.5);
 }
 .tab-pane h2 {
 	text-align: center;
+}
+.tab-content {
+	overflow:inherit; 
 }
