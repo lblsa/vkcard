@@ -216,7 +216,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div><!-- 
           <div class="accordion-group">
             <div class="accordion-heading">
               <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse5">
@@ -228,7 +228,7 @@
                 Отправить на стену
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
