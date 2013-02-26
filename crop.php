@@ -42,9 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
   // накладываем виньетку
   if ($_POST['vin'])
   {
-    if (file_exists($_POST['vin']))
+    if (file_exists('./'.$_POST['vin']))
     {
-      $vin = new Imagick($_POST['vin']);
+      $vin = new Imagick('./'.$_POST['vin']);
       $image->compositeImage( $vin, Imagick::COMPOSITE_DEFAULT, 0, 0 );
   
       $image->annotateImage($draw, $_POST['tx']-2, $_POST['ty']+18, 0, $_POST['text']);
