@@ -7,7 +7,6 @@ $(function(){
     $('#myTab a:first').tab('show');
   });
 
-
   $('#myTab a').click(function (e) {
     e.preventDefault();
 
@@ -16,14 +15,14 @@ $(function(){
       $("#feb14 .span7").appendTo("#feb23 .main_spans");
       $('.vin[for=vin1], .vin[for=vin2]').hide();
       $('.vignette').each(function(a,b){     $(b).attr('src','/vignette/23_'+(a+1)+'.png')    });
-      $('.vin:last').click();
+      $('.vin:last input').click();
       $('.custom_text').html($('.customtext_23').html());
     } else {
       $("#feb23 .span5").appendTo("#feb14 .main_spans");
       $("#feb23 .span7").appendTo("#feb14 .main_spans");
       $('.vin[for=vin1], .vin[for=vin2]').show();
       $('.vignette').each(function(a,b){     $(b).attr('src','/vignette/14_'+(a+1)+'.png')    });
-      $('.vin:first').click();
+      $('.vin:first input').click();
       $('.custom_text').html($('.customtext_14').html());
     }
 
@@ -165,6 +164,7 @@ $(function(){
   });
 
   $('.vin').click(function(){
+
     $('.vin_cont img').attr('src',$('img',this).attr('src'));
     $('.vin input').val($('img',this).attr('src'));
 
@@ -178,7 +178,8 @@ $(function(){
 
   $('#crop').click(function(){
     if ($('#cropbox').attr('src')!=''){
-      if (user) {
+      if (user || typeof(VK)=='undefined') {
+
         var data = {
           px:$('#px').val(),
           tx:$('#tx').val(),
@@ -188,6 +189,8 @@ $(function(){
           y:$('#y').val(),
           h:$('#h').val(),
           w:$('#w').val(),
+          new_h:parseInt($('.jcrop-holder img').height()),
+          new_w:parseInt($('.jcrop-holder img').width()),
           fs:$('#fs').val(),
           vin:$('.vin input:checked').val(),
           img:$('#img').val(),
@@ -198,13 +201,23 @@ $(function(){
           type: "POST",
           url: "/crop.php",
           data:data,
-          dataType: "html"
-        }).done(function( result ) {
-          $('#pre_result').fadeOut();
-          $('#result_image').attr('src','/'+result);
-          $('#result').fadeIn();
+          dataType: "json"
+        }).done(function( data ) {
 
-          // TODO show selected user
+          if (data.success == 1 && data.result){
+
+            $('#pre_result').fadeOut();
+            $('#result_image').attr('src','/'+data.result);
+            $('#result').fadeIn();
+
+          } else {
+            if (data.error) {
+              alert(data.error);
+            } else {
+              alert('Неизвестная ошибка, обратитесь к администратору');
+            }
+          }
+
         });
       } else {
        alert('Необходимо выбрать друга');
@@ -309,18 +322,19 @@ $(function(){
     }
     return false;
   });
+  if (typeof(VK) != 'undefined'){
+    $('#body').on('click','#vk_auth span',function(){
+      user = users[parseInt($(this).attr('data-i'))];
+      $('#dLabel span').html(user.first_name + ' ' + user.last_name);
 
-  $('#body').on('click','#vk_auth span',function(){
-    user = users[parseInt($(this).attr('data-i'))];
-    $('#dLabel span').html(user.first_name + ' ' + user.last_name);
+      $('#user .user_link').attr('href','http://vk.com/id'+user.uid);
+      $('#user .media-object').attr('src',user.photo);
+      $('#user .media-heading').html(user.first_name + ' ' + user.last_name);
 
-    $('#user .user_link').attr('href','http://vk.com/id'+user.uid);
-    $('#user .media-object').attr('src',user.photo);
-    $('#user .media-heading').html(user.first_name + ' ' + user.last_name);
-
-    $('.dropdown').removeClass('open');
-    return false;
-  });
+      $('.dropdown').removeClass('open');
+      return false;
+    });
+  }
 
   $('#body').on('click','.custom_text button', function(){
     if ($(this).attr('data-toggle') == 'popover'){

@@ -116,6 +116,8 @@
           <input type="hidden" id="y" name="y" />
           <input type="hidden" id="w" name="w" />
           <input type="hidden" id="h" name="h" />
+          <input type="hidden" id="new_w" name="new_w" />
+          <input type="hidden" id="new_h" name="new_h" />
           <input type="hidden" id="img" name="img" />
           <input type="submit" class="btn btn-block" id="crop" value="Сделать виньетку" />
         </div>
@@ -168,7 +170,7 @@
                     <td>
                       <label class="vin" for="vin1">
                         <img width="80" class="vignette" src="/vignette/14_1.png" alt=""><br>
-                        <input type="radio" value="1" checked name="vin" id="vin1" />
+                        <input type="radio" value="vignette/14_1.png" checked name="vin" id="vin1" />
                       </label>
                     </td>
                     <td>
