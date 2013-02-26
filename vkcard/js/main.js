@@ -78,6 +78,7 @@ $(function(){
                   // Store the API in the jcrop_api variable
                   jcrop_api = this;
                 });
+                $('.jcrop-holder').css({width: new_w, height: new_h, overflow:'hidden'});                
               }
 
               img.src = file_url;
@@ -142,8 +143,9 @@ $(function(){
   });
 
   $('.clone').resizable({
-    alsoResize: "#prev_container",
+    alsoResize: "#prev_container, #preview, .jcrop-holder img",
     aspectRatio: true,
+    containment: "parent",
     stop:function( event, ui ){
       var new_x1 = parseInt($('#x').val())+ui.size.width;
       var new_y1 = parseInt($('#y').val())+ui.size.height;
