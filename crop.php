@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
   $draw = new ImagickDraw();
   $draw->setFont('tnr.ttf');
-  $draw->setTextAlignment(CENTER);
+  //$draw->setTextAlignment(CENTER);
   $draw->setFontSize((int)$_POST['fs']);
 
   $image = new Imagick();
