@@ -288,5 +288,14 @@
     <script type="text/javascript" src="/vkcard/js/jquery-ui-1.10.0.custom.min.js"></script>
     <script type="text/javascript" src="/vkcard/js/underscore-min.js"></script>
     <script type="text/javascript" src="/vkcard/js/main.js"></script>
-  </body>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-4220754215495930";
+/* VKcards */
+google_ad_slot = "2352315208";
+google_ad_width = 728;
+google_ad_height = 90; //-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</body>
 </html>
