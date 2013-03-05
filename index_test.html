@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Vkcard</title>
+	<link href="/css/main.css" rel="stylesheet">
+	<!--[if lte IE 7]><script src="lte-ie7.js"></script><![endif]-->
+<script src="/js/jquery.min.js"></script>
+<script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.core.js"></script>
+<script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.slide.js"></script>
+<script src="/js/main.js"></script>
+</head>
+<body>
+<div id="container">
+	<div id="header">
+
+		<ul class="menu">
+			<li>
+				<a data-step="1" data-title="1. фото" class="btn btn-block active" href="#">1 ВЫБРАТЬ ФОТО<i></i></a>
+			</li>
+			<li>
+				<a data-step="2" data-title="2. виньетки" class="btn btn-block" href="#">2 ВЫБРАТЬ ВИНЬЕТКУ<i></i></a>
+			</li>
+			<li>
+				<a data-step="3" data-title="3. текст" class="btn btn-block" href="#">3 ВЫБРАТЬ ТЕКСТ<i></i></a>
+			</li>
+			<li>
+				<a data-step="4" data-title="4. отправить" class="btn btn-block last-child" href="#">4 ОТПРАВИТЬ<i></i></a>
+			</li>
+		</ul> 
+
+	</div>
+	<div id="wrapper">
+		<div id="content">
+			<div class="title">
+				<span></span><h2>1. фото</h2><span></span>
+			</div>
+			<table ><tr>
+				<td>
+					<div class="content" id="step1">
+						<div class="content-padding">
+							<div class="photo_container">
+								<div class="photo">
+									<a href="#">Выбрать фото</a>
+								</div>
+							</div>
+							<div class="upload_photo">
+								<a class="btn upload_vign" href="#">загрузить<i></i></a>
+							</div>
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="content hide" id="step2">
+						<div class="content-padding">
+							<div class="search-line">
+								<select name="vignete_cat" class="vign_cat">
+									<option value="0">ВСЕ</option>
+									<option value="14feb">14 Февраля</option>
+									<option value="23feb">23 Февраля</option>
+									<option value="8mar">8 Марта</option>
+								</select>
+								<a href="#" class="btn upload_vign">Загрузить свою<i></i></a>
+							</div>
+							<div class="friends vign">
+								<ul>
+									<li data-cat="14feb" class="active">
+										<img width="95" src="/vign/14feb_1.png" /><div class="overlay"></div>
+									</li>
+									<li data-cat="14feb">
+										<img width="95" src="/vign/14feb_2.png" /><div class="overlay"></div>
+									</li>
+									<li data-cat="14feb">
+										<img width="95" src="/vign/14feb_3.png" /><div class="overlay"></div>
+									</li>
+									<li data-cat="14feb">
+										<img width="95" src="/vign/14feb_4.png" /><div class="overlay"></div>
+									</li>
+									<li data-cat="14feb">
+										<img width="95" src="/vign/14feb_5.png" /><div class="overlay"></div>
+									</li>
+									<li data-cat="23feb">
+										<img width="95" src="/vign/23feb_1.png" /><div class="overlay"></div>
+									</li>
+									<li data-cat="23feb">
+										<img width="95" src="/vign/23feb_2.png" /><div class="overlay"></div>
+									</li>
+									<li data-cat="23feb">
+										<img width="95" src="/vign/23feb_3.png" /><div class="overlay"></div>
+									</li>
+									<li data-cat="23feb" class="gorizont">
+										<img width="95" src="/vign/23feb_4.png" /><div class="overlay"></div>
+									</li>
+									<li data-cat="23feb" class="gorizont">
+										<img width="95" src="/vign/23feb_5.png" /><div class="overlay"></div>
+									</li>
+									<li data-cat="8mar">
+										<img width="95" src="/vign/8mar_1.png" /><div class="overlay"></div>
+									</li>
+									<li data-cat="8mar">
+										<img width="95" src="/vign/8mar_2.png" /><div class="overlay"></div>
+									</li>
+									<li data-cat="8mar">
+										<img width="95" src="/vign/8mar_3.png" /><div class="overlay"></div>
+									</li>
+									<li data-cat="8mar" class="gorizont">
+										<img width="95" src="/vign/8mar_4.png" /><div class="overlay"></div>
+									</li>
+									<li data-cat="8mar" class="gorizont">
+										<img width="95" src="/vign/8mar_5.png" /><div class="overlay"></div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="content hide" id="step3">
+						<div class="content-padding">
+							<div class="one-line">
+								<h3>размер шрифта</h3>
+								<select name="fontsize">
+									<option value="12">12</option>
+									<option value="14">14</option>
+									<option value="16">16</option>
+								</select>
+								<ul class="text-align">
+									<li><a href="#" class="active" data-align="left">
+										<i class="icon-align-left" aria-hidden="true" data-icon="&#xe003;"></i>
+									</a></li>
+									<li><a href="#" data-align="center">
+										<i class="icon-align-center" aria-hidden="true" data-icon="&#xe002;"></i>
+									</a></li>
+									<li><a href="#" data-align="right">
+										<i class="icon-align-right" aria-hidden="true" data-icon="&#xe001;"></i>
+									</a></li>
+									<li><a href="#" data-align="justify">
+										<i class="icon-align-justify" aria-hidden="true" data-icon="&#xe004;"></i>
+									</a></li>
+								</ul>
+							</div>
+							<div class="clear"></div>
+							<div class="text">
+								<textarea placeholder="Введите ваше поздравление"></textarea>
+							</div>
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="content hide" id="step4">
+						<div class="content-padding">
+							<h3>выберите друга</h3>
+							<div class="search-line">
+								<input type="text" class="search" placeholder="Имя друга" />
+								<a href="#" class="btn">Отправить<i></i></a>
+							</div>
+							<div class="friends">
+								<ul>
+									<li class="active"><img src="/img/ava1.jpg" />><div class="overlay"></div><span>Петруша</span></li>
+									<li><img src="/img/ava2.jpg" />><div class="overlay"></div><span>Алена</span></li>
+									<li><img src="/img/ava3.jpg" />><div class="overlay"></div><span>Вася</span></li>
+									<li><img src="/img/ava4.jpg" />><div class="overlay"></div><span>Дима</span></li>
+									<li><img src="/img/ava5.jpg" />><div class="overlay"></div><span>Алена</span></li>
+									<li><img src="/img/ava1.jpg" />><div class="overlay"></div><span>Петруша</span></li>
+									<li><img src="/img/ava2.jpg" />><div class="overlay"></div><span>Петруша</span></li>
+									<li><img src="/img/ava3.jpg" />><div class="overlay"></div><span>Дима</span></li>
+									<li><img src="/img/ava4.jpg" />><div class="overlay"></div><span>Петруша</span></li>
+									<li><img src="/img/ava5.jpg" />><div class="overlay"></div><span>Алена</span></li>
+									<li><img src="/img/ava1.jpg" />><div class="overlay"></div><span>Петруша</span></li>
+									<li><img src="/img/ava2.jpg" />><div class="overlay"></div><span>Петруша</span></li>
+									<li><img src="/img/ava3.jpg" />><div class="overlay"></div><span>Вася</span></li>
+									<li><img src="/img/ava4.jpg" />><div class="overlay"></div><span>Дима</span></li>
+									<li><img src="/img/ava5.jpg" />><div class="overlay"></div><span>Петруша</span></li>
+									<li><img src="/img/ava1.jpg" />><div class="overlay"></div><span>Вася</span></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr></table>
+		</div>
+	</div>
+	
+	<div id="navigation">
+		<div id="pre_result">
+          <div style="position:relative;">
+            <div class="card"></div>
+            <div class="vin_cont">
+                <img width="315" src="/img/8mar_2.png" />
+                <div id="inner_text"><p></p></div>
+            </div>
+            <div class="clone"></div>
+          </div>
+          <input type="hidden" id="px" name="px" value="1">
+          <input type="hidden" id="py" name="py" value="1">
+          <input type="hidden" id="tx" name="tx" value="36">
+          <input type="hidden" id="ty" name="ty" value="293">
+          <input type="hidden" id="x" name="x">
+          <input type="hidden" id="y" name="y">
+          <input type="hidden" id="w" name="w">
+          <input type="hidden" id="h" name="h">
+          <input type="hidden" id="new_w" name="new_w">
+          <input type="hidden" id="new_h" name="new_h">
+          <input type="hidden" id="img" name="img">
+          <input type="hidden" class="btn btn-block" id="crop" value="Сделать виньетку">
+        </div>
+	</div>
+	
+	<div id="extra" class="hide">
+		<p><strong>3) More stuff here.</strong> very text make long column make filler fill make column column silly filler text silly column fill silly fill column text filler make text silly filler make filler very silly make text very very text make long filler very make column make silly column fill silly column long make silly filler column filler silly long long column fill silly column very </p>
+	</div>
+	
+	<div id="footer">
+		<img src="/img/baner.jpg">
+	</div>
+</div>
+</body>
+</html>
