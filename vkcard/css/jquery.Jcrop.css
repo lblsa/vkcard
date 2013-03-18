@@ -106,10 +106,10 @@ height:250px;
 cursor: move;
 top:0px;
 left:0px;
-border: 1px solid rgba(221, 221, 221, 0);
+border: 1px solid #ddd;
 }
 .clone:hover{
-border: 1px solid rgba(221, 221, 221, 0.5);
+border: 1px solid #ddd;
 }
 .drop {
 	border: 1px dashed gray;
